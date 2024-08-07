@@ -1,0 +1,42 @@
+{
+  "name": "dizipal",
+  "productName": "Dizipal",
+  "version": "0.1.0",
+  "description": "Dizipal application that can work in the desktop environment.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.4.0",
+    "@electron-forge/maker-deb": "^7.4.0",
+    "@electron-forge/maker-rpm": "^7.4.0",
+    "@electron-forge/maker-squirrel": "^7.4.0",
+    "@electron-forge/maker-zip": "^7.4.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
+    "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "31.3.1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "ahmetcanisik",
+    "email": "can.isik.business@gmail.com",
+    "url": "https://ahmetcanisik.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dizipaltv/dizipal.git"
+  },
+  "license": "MIT",
+  "packageManager": "yarn@4.4.0+sha512.91d93b445d9284e7ed52931369bc89a663414e5582d00eea45c67ddc459a2582919eece27c412d6ffd1bd0793ff35399381cb229326b961798ce4f4cc60ddfdb",
+  "dependencies": {
+    "@cliqz/adblocker-electron": "^1.31.3",
+    "cross-fetch": "^4.0.0",
+    "electron-squirrel-startup": "^1.0.1"
+  }
+}
