@@ -9,13 +9,14 @@ class Filer {
 }
 
 const package_json = Filer.read();
-package_json?.author = "ahmetcanisik";
-package_json += {
-    github: "https://github.com/dizipaltv/dizipal"
-}
 
 module.exports = {
     config: {
-        package: package_json
+        package: package_json,
+        custom: {
+            userName: "ahmetcanisik",
+            repoUrl: "https://github.com/dizipaltv/dizipal",
+            styles: path.join(__dirname, "src", "styles.css")
+        }
     }
 }
