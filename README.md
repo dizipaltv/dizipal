@@ -79,6 +79,23 @@ Aşağıdaki komutları terminalinize yapıştırınız.
 yarn start
 ```
 
+<br />
+
+#### Daha fazla komuta nasıl ulaşabilirim?
+Evet daha birkaç komut daha mevcut bunları [package.json](package.json) içerisinde `"scripts"` altında bulabilirsiniz.
+işte versiyon 1.0.0 için kullanılan komutlar
+```json
+"scripts": {
+    "start": "electron-forge start",
+    "package": "yarn dizipal && electron-forge package",
+    "build": "yarn package && yarn make --platform win32 && yarn make --platform linux && yarn make --platform darwin",
+    "make": "electron-forge make",
+    "template": "fvonts tmt Dizipal",
+    "dizipal": "yarn template && node placeholder.js",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+```
 <br /><br />
 
 LICENSE : [MIT](LICENSE)
