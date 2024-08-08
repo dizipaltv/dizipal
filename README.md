@@ -7,7 +7,8 @@
 Merhabalar ücretsiz film izlemeyi sevenler topluluğu. Sizler için Dizipal'in masaüstü versiyonunu çıkardım. Amacım Bu uygulamayı güncel dizipal adresine göre güncel tutmak. Şu anda ilk sürümünü yayınladım ve projenin kaynak kodlarını da beraberinde yayınladım. Keyifli Seyretmeler.
 
 > [!IMPORTANT]      
-> Şu anda sadece Windows için yüklenebilir.
+> Sorumluluk tamamen kullanan kullanıcıya aittir. Herhangi bir mesuliyet kabul etmiyorum.     
+> Şu anda sadece Windows için yüklenebilir.     
 
 
 <br /><br />
