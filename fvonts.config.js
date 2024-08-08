@@ -16,7 +16,7 @@ module.exports = {
         custom: {
             userName: "ahmetcanisik",
             repoUrl: "https://github.com/dizipaltv/dizipal",
-            styles: path.join(__dirname, "src", "styles.css")
+            styles: path.join(__dirname, "src", "pattern.css")
         }
     }
 }

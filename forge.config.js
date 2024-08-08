@@ -1,15 +1,19 @@
 const path = require('path');
-const { version, name } = require('./package.json');
+const { SyncFiles } = require('./src/filer/sync');
 const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
-const outputDir = path.join(__dirname, "releases", `${name}_${version}`);
+const INFO = SyncFiles.read_json(path.join(__dirname, "package.json"));
 
 module.exports = {
   packagerConfig: {
     asar: true,
-    out: outputDir,
     name: "dizipal",
+    ignore: [
+      "^/template/",
+      "^/fvonts.config.js$",
+      "^/placeholder.js$"
+    ],
     executableName: "dizipal",
     icon: path.join(__dirname, 'src/icons/icon'),
     win32metadata: {
@@ -24,18 +28,14 @@ module.exports = {
       name: '@electron-forge/maker-squirrel',
       config: {
         name: 'Dizipal',
-        setupExe: `${name}_${version}_win64.exe`,
+        setupExe: `${INFO.name}_${INFO.version}_win64.exe`,
         setupIcon: path.join(__dirname, 'src/icons/icon.ico'),
-        iconUrl: path.join(__dirname, 'src/icons/icon.ico'),
-        outputDirectory: path.join(outputDir, "Windows")
+        iconUrl: path.join(__dirname, 'src/icons/icon.ico')
       }
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
-      config: {
-        out: path.join(outputDir, "Mac")
-      }
+      platforms: ['darwin']
     },
     {
       name: '@electron-forge/maker-deb',
@@ -43,8 +43,7 @@ module.exports = {
       config: {
         categories: ['Media & Entertainment'],
         description: 'Dizipal application that can work in the desktop environment.',
-        icon: path.join(__dirname, 'src/icons/icon.png'),
-        out: path.join(outputDir, "Linux")
+        icon: path.join(__dirname, 'src/icons/icon.png')
       }
     },
   ],
@@ -65,4 +64,16 @@ module.exports = {
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'dizipaltv',
+          name: 'dizipal'
+        },
+        prerelease: false
+      }
+    }
+  ]
 };

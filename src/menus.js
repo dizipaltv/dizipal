@@ -1,9 +1,54 @@
-const {BrowserWindow, shell} = require("electron");
+const {BrowserWindow, shell, Menu} = require("electron");
 const path = require("path");
 
 class Menus {
     static #len = 0;
     static #aboutWindow = null; // AboutWindow örneğini saklayacak alan
+    static #isMac = process.platform === "darwin";
+
+    static get default() {
+        return Menu.buildFromTemplate([
+            {
+                label: 'File',
+                submenu: [
+                    Menus.#isMac ? { role: "close" } : { role: 'quit' }
+                ]
+            },
+            {
+                label: 'Edit',
+                submenu: [
+                    { role: 'undo' },
+                    { role: 'redo' },
+                    { type: 'separator' },
+                    { role: 'cut' },
+                    { role: 'copy' },
+                    { role: 'paste' },
+                    { type: 'separator' },
+                    { role: 'selectall' }
+                ]
+            },
+            {
+                label: "View",
+                submenu: [
+                    { role: "reload" },
+                    { role: "forceReload" },
+                    { role: 'toggleDevTools' }
+                ]
+            },
+            {
+                label: 'Help',
+                submenu: [
+                    {
+                        label: 'About',
+                        click() {
+                            Menus.assert();
+                            Menus.AboutWindow();
+                        }
+                    }
+                ]
+            }
+        ]);
+    }
 
     static AboutWindow() {
         if (Menus.#aboutWindow) {
