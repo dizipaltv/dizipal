@@ -13,6 +13,15 @@ Merhabalar ücretsiz film izlemeyi sevenler topluluğu. Sizler için Dizipal'in 
 <br /><br />
 
 
+## Fazla bilgi göz çıkarmaz
+
+- Dizipal'in güncel sitelerine her zaman erişebileceksiniz.
+- Dizipal'i özelleştirilmiş adblocker ile kullanacaksınız (Tamamen dizipal'e özel)
+- Herhangi bir internet taraması yapmak zorunda kalmadan, çoğu dizi ve filme Masaüstü uygulamasından ulaşabileceksiniz.
+
+<br /><br />
+
+
 ## Nasıl İndirilir?
 
 [Buradan](https://github.com/dizipaltv/dizipal/releases/latest) son sürüme ulaşabilirsiniz. Bu sayfaya gittiğinizde Assets başlığı altında yer alan .exe dosyasını indirip kurmanız yeterli olacaktır.
