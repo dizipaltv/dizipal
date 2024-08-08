@@ -72,7 +72,8 @@ module.exports = {
           owner: 'dizipaltv',
           name: 'dizipal'
         },
-        prerelease: false
+        prerelease: false,
+        draft: false
       }
     }
   ]
