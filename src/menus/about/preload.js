@@ -8,11 +8,23 @@ window.addEventListener('DOMContentLoaded', () => {
     const version_infos = document.getElementById('version_infos');
     if (version_infos) {
         Object.entries(versions).forEach(([key, value]) => {
-            const li = document.createElement('li');
-            const code = document.createElement('code');
-            code.textContent = `${key}: ${value}`;
-            li.appendChild(code);
-            version_infos.appendChild(li);
+            const tr = document.createElement('tr');
+
+            const tdKey = document.createElement('td');
+            const keyCode = document.createElement('code');
+            keyCode.classList.add('key');
+            keyCode.textContent = key;
+            tdKey.appendChild(keyCode);
+            tr.appendChild(tdKey);
+
+            const tdValue = document.createElement('td');
+            const valueCode = document.createElement('code');
+            valueCode.classList.add('value');
+            valueCode.textContent = value;
+            tdValue.appendChild(valueCode);
+            tr.appendChild(tdValue);
+
+            version_infos.appendChild(tr);
         });
     }
 })

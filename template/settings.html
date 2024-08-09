@@ -13,8 +13,20 @@
     <body class="pattern-vertical-lines-lg">
         <header class=list-title><h1>$fv.name Settings</h1></header>
         <main>
-            <label for="currentSiteURL">Dizipal Güncel Adres</label><input id="currentSiteURL" type="text">
-            <button type="button" id="saveChanges">Değişiklikleri Kaydet</button>
+            <table id="settings">
+                <tbody>
+                    <tr>
+                        <td colspan="2"><label for="adBlockerEnabled">AdBlocker Enabled?</label><input id="adBlockerEnabled" type="checkbox" disabled readonly checked></td>
+                    </tr>
+                    <tr>
+                        <td><label for="currentSiteURL">Dizipal Güncel Adres</label></td>
+                        <td><input class="inp" id="currentSiteURL" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="button" class="btn btn-full" id="saveChanges">Değişiklikleri Kaydet</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </main>
 
         <script src="$fv.settingsRenderer"></script>

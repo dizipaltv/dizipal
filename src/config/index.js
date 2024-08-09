@@ -1,11 +1,12 @@
 const { Sync } = require("../filer");
-const os = require("node:os");
-const path = require("node:path");
+const os = require("os");
+const path = require("path");
 
 class Config {
     static BASIC_CONFIGS = {
         "currentSiteURL": "https://dizipal738.com",
-        "latestAdress": 738
+        "latestAdress": 738,
+        "adBlocker": true
     }
     static CONFIG_FOLDER = path.join(os.homedir(), 'AppData', 'Roaming', 'Dizipal');
     static CONFIG_FILE = path.join(Config.CONFIG_FOLDER, ".dizipalrc");

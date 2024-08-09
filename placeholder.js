@@ -14,7 +14,10 @@ class Placeholder {
                     const ext = path.extname(file);
                     const file_name = file.replace(ext, '');
                     const srcPath = path.join(folder, file);
-                    const destPath = path.join(destination, file_name, "index.html");
+                    let destPath = path.join(destination, file_name, "index.html");
+                    if (file_name === "loading") {
+                        destPath = path.join(__dirname, "src", "loading", "index.html");
+                    }
                     Async.copy_file(srcPath, destPath);
                     console.log(`✅ This file ${srcPath} was successfully copied to destination ${destPath}!`)
                 }

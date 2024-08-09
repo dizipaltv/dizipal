@@ -1,4 +1,4 @@
-const fs = require("node:fs");
+const fs = require("fs");
 
 class Sync {
     static read_file(file_name) {

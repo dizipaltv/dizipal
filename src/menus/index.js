@@ -99,8 +99,8 @@ class Menus {
         }
 
         Menus.#settingsWindow = new BrowserWindow({
-            width: 400,
-            height: 200,
+            width: 600,
+            height: 400,
             title: 'Settings',
             icon: path.join(__dirname, "app", "icons", "png", "info.png"),
             modal: true,
@@ -125,7 +125,7 @@ class Menus {
             return { action: 'deny' };
         });
 
-        Menus.#settingsWindow.setMenu(Menus.default);
+        Menus.#settingsWindow.setMenu(null);
 
         Menus.#settingsWindow.on('closed', () => {
             Menus.#settingsWindow = null; // Pencere kapatıldığında referansı temizle

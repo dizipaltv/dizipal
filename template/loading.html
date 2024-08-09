@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta content="script-src 'self' 'unsafe-inline'" http-equiv=Content-Security-Policy>
+        <meta charset=utf-8>
+        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name=viewport>
+        <title>LOADING...</title>
+        <meta content=ahmetcanisik name=author>
+        <link rel="stylesheet" href="$fv.mythemeCSS">
+        <link rel="stylesheet" href="$fv.loadingCSS">
+    </head>
+    <body class="pattern-vertical-lines-lg">
+        <header class="banner">
+            <img src="$fv.icon" width="32" height="32" alt="$fv.name logo">
+            <h1><code class="value">$fv.name</code></h1>
+        </header>
+        <footer><h3><code>LOADING...</code></h3></footer>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                document.body.innerHTML += process.platform;
+            })
+        </script>
+    </body>
+</html>

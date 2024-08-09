@@ -3,6 +3,7 @@ const { Menus } = require("./menus");
 const { AdBlocker } = require("./adblocker");
 const { updateElectronApp } = require('update-electron-app');
 const { Config } = require("./config");
+const { Loading } = require("./loading");
 const path = require('path');
 
 updateElectronApp();
@@ -16,10 +17,9 @@ let DIZIPAL = Config.getInformation;
 
 const createWindow = (url) => {
   mainWindow = new BrowserWindow({
-    width: 1080,
+    width: 1024,
     height: 768,
-    show: true,
-    titleBarStyle: 'customButtonsOnHover',
+    show: false, // Pencereyi otomatik olarak göstermiyoruz
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -32,10 +32,6 @@ const createWindow = (url) => {
   AdBlocker.blockURLs(session);
   AdBlocker.blockAds(mainWindow);
 
-  mainWindow.once('ready-to-show', () => {
-    mainWindow.show();
-  });
-
   mainWindow.loadURL(url);
 
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
@@ -47,7 +43,7 @@ const createWindow = (url) => {
   });
 };
 
-app.whenReady().then(() => {
+const mainPanel = () => {
   nativeTheme.themeSource = "dark";
   Menu.setApplicationMenu(Menus.default);
 
@@ -65,6 +61,21 @@ app.whenReady().then(() => {
       createWindow(DIZIPAL.currentSiteURL);
     }
   });
+}
+
+app.on('ready', () => {
+  Loading.show();
+})
+
+app.whenReady().then(() => {
+  mainPanel();
+
+  mainWindow.once('ready-to-show', () => {
+    setTimeout(() => {
+      Loading.destroy();
+      mainWindow.show();
+    }, 4000);
+  });
 });
 
 app.on('window-all-closed', () => {
@@ -73,7 +84,6 @@ app.on('window-all-closed', () => {
   }
 });
 
-// IPC handler for site URL
 ipcMain.handle('get-site-url', () => {
   return DIZIPAL.currentSiteURL;
 });
@@ -89,4 +99,8 @@ ipcMain.on('set-dizipal', (event, json) => {
 ipcMain.on('restart-app', () => {
   app.relaunch();
   app.exit(0);
+});
+
+ipcMain.on('fetch-url', () => {
+  console.log("fetch url on ipmain");
 });

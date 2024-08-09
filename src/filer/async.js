@@ -1,4 +1,4 @@
-const fs = require("node:fs").promises;
+const fs = require("fs").promises;
 
 class Async {
     static async read_file(file_name) {
