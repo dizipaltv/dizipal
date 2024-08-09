@@ -1544,7 +1544,7 @@ __metadata:
     "@electron/fuses": "npm:^1.8.0"
     electron: "npm:31.3.1"
     electron-squirrel-startup: "npm:^1.0.1"
-    fvonts: "npm:^0.1.5"
+    fvonts: "npm:0.1.6"
     npm-run-all: "npm:^4.1.5"
     update-electron-app: "npm:^3.0.0"
   languageName: unknown
@@ -2095,14 +2095,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fvonts@npm:^0.1.5":
-  version: 0.1.5
-  resolution: "fvonts@npm:0.1.5"
+"fvonts@npm:0.1.6":
+  version: 0.1.6
+  resolution: "fvonts@npm:0.1.6"
   dependencies:
     commander: "npm:^12.1.0"
   bin:
     fvonts: index.js
-  checksum: 10c0/25ae85562ecfd19102cda40f8e6ca6f07943579bea6d3b9976d040ea8dab79a7d91e89e72dce87e217149d528454a22c6bb376006fbb57b7f0313568d0bae181
+  checksum: 10c0/484a61ddd554edd285255919815a777a88ee16080af07e5d70efe474e4c6dfc89edea265ea45964139d3ca9ad5c3b75bd40e538c654a7e86f69a8b9e1ddb21d4
   languageName: node
   linkType: hard
 

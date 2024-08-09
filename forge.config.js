@@ -1,9 +1,9 @@
-const path = require('path');
-const { SyncFiles } = require('./src/filer/sync');
+const path = require('node:path');
+const { Sync } = require('./src/filer');
 const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
-const INFO = SyncFiles.read_json(path.join(__dirname, "package.json"));
+const INFO = Sync.read_json(path.join(__dirname, "package.json"));
 
 module.exports = {
   packagerConfig: {

@@ -1,14 +1,7 @@
 const path = require("node:path");
-const fs = require("node:fs");
+const { Sync } = require("./src/filer");
 
-class Filer {
-    static read(file_name="package.json") {
-        const file = fs.readFileSync(path.join(__dirname, file_name), "utf-8");
-        return JSON.parse(file);
-    }
-}
-
-const package_json = Filer.read();
+const package_json = Sync.read_json(path.join(__dirname, "package.json"));
 
 module.exports = {
     config: {
@@ -16,7 +9,10 @@ module.exports = {
         custom: {
             userName: "ahmetcanisik",
             repoUrl: "https://github.com/dizipaltv/dizipal",
-            styles: path.join(__dirname, "src", "pattern.css")
+            menusCSS: path.join(__dirname, "src", "styles", "menus.css"),
+            patternCSS: path.join(__dirname, "src", "styles", "pattern.css"),
+            mythemeCSS: path.join(__dirname, "src", "styles", "mytheme.min.css"),
+            settingsRenderer: path.join(__dirname, "src", "menus", "settings", "renderer.js")
         }
     }
 }

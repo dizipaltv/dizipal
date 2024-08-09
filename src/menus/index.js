@@ -2,15 +2,27 @@ const {BrowserWindow, shell, Menu} = require("electron");
 const path = require("path");
 
 class Menus {
-    static #len = 0;
     static #aboutWindow = null; // AboutWindow örneğini saklayacak alan
+    static #settingsWindow = null; // settingsWindow örneğini saklayacak alan
     static #isMac = process.platform === "darwin";
 
     static get default() {
         return Menu.buildFromTemplate([
             {
-                label: 'File',
+                label: 'Dizipal',
                 submenu: [
+                    {
+                        label: "Settings",
+                        click() {
+                            Menus.SettingsWindow();
+                        }
+                    },
+                    {
+                        label: 'About',
+                        click() {
+                            Menus.AboutWindow();
+                        }
+                    },
                     Menus.#isMac ? { role: "close" } : { role: 'quit' }
                 ]
             },
@@ -34,18 +46,6 @@ class Menus {
                     { role: "forceReload" },
                     { role: 'toggleDevTools' }
                 ]
-            },
-            {
-                label: 'Help',
-                submenu: [
-                    {
-                        label: 'About',
-                        click() {
-                            Menus.assert();
-                            Menus.AboutWindow();
-                        }
-                    }
-                ]
             }
         ]);
     }
@@ -57,12 +57,9 @@ class Menus {
             return;
         }
 
-        Menus.assert();
-        Menus.#len += 1;
-
         Menus.#aboutWindow = new BrowserWindow({
-            width: 400,
-            height: 200,
+            width: 350,
+            height: 300,
             title: 'About',
             icon: path.join(__dirname, "app", "icons", "png", "info.png"),
             modal: true,
@@ -74,11 +71,11 @@ class Menus {
             webPreferences: {
                 nodeIntegration: false,
                 contextIsolation: true,
-                preload: path.join(__dirname, 'preload.js')
+                preload: path.join(__dirname, "about", 'preload.js')
             }
         });
 
-        Menus.#aboutWindow.loadFile(path.join(__dirname, "about.html"));
+        Menus.#aboutWindow.loadFile(path.join(__dirname, "about", "index.html"));
 
         Menus.#aboutWindow.webContents.setWindowOpenHandler(({ url }) => {
             if (url.startsWith('https:')) {
@@ -91,7 +88,47 @@ class Menus {
 
         Menus.#aboutWindow.on('closed', () => {
             Menus.#aboutWindow = null; // Pencere kapatıldığında referansı temizle
-            Menus.#len -= 1;
+        });
+    }
+
+    static SettingsWindow() {
+        if (Menus.#settingsWindow) {
+            // Zaten açık bir pencere varsa, o pencereyi ön planda yap
+            Menus.#settingsWindow.focus();
+            return;
+        }
+
+        Menus.#settingsWindow = new BrowserWindow({
+            width: 400,
+            height: 200,
+            title: 'Settings',
+            icon: path.join(__dirname, "app", "icons", "png", "info.png"),
+            modal: true,
+            parent: BrowserWindow.getFocusedWindow(),
+            resizable: false,
+            minimizable: false,
+            maximizable: false,
+            backgroundColor: "#000000",
+            webPreferences: {
+                nodeIntegration: false,
+                contextIsolation: true,
+                preload: path.join(__dirname, "settings", 'preload.js')
+            }
+        });
+
+        Menus.#settingsWindow.loadFile(path.join(__dirname, "settings", "index.html"));
+
+        Menus.#settingsWindow.webContents.setWindowOpenHandler(({ url }) => {
+            if (url.startsWith('https:')) {
+                shell.openExternal(url);
+            }
+            return { action: 'deny' };
+        });
+
+        Menus.#settingsWindow.setMenu(Menus.default);
+
+        Menus.#settingsWindow.on('closed', () => {
+            Menus.#settingsWindow = null; // Pencere kapatıldığında referansı temizle
         });
     }
 
@@ -99,18 +136,6 @@ class Menus {
         if (Menus.#aboutWindow) {
             Menus.#aboutWindow.close();
         }
-    }
-
-    static assert() {
-        if (Menus.#len > 0) {
-            throw new Error(
-                `Maximum number of windows reached ${Menus.#len}`
-            );
-        }
-    }
-
-    static get length() {
-        return Menus.#len;
     }
 }
 
