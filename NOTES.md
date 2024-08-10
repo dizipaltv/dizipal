@@ -6,6 +6,7 @@
 * Kullanıcının Dizipal'in en güncel adresini Tek tuşla bulacağı bir buton eklenecek "eşle"
 
 ## 1.2.0 Dosyaları Sıkıştırmak
+* electron-updater doğru çalışmıyor bu hatayı düzelteceğim.
 * Ana dizinimdeki Minifier.js yardımıyla dev klasöründe yer alan tüm dosyalarıı ve klasörleri önce src adında bir klasöre taşıyacağım.
 * Src klasörünü js minifier, css minifier, image minifier yardımlarıyla sıkıştıracağım.
 * Scripts altına yarn minifier adında bir komut daha yerleştireceğim ve bu komut, package, start ve publish komutlarıyla birlikte çalışacak.
