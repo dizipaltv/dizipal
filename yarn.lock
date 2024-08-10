@@ -2669,13 +2669,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^12.1.0":
-  version: 12.1.0
-  resolution: "commander@npm:12.1.0"
-  checksum: 10c0/6e1996680c083b3b897bfc1cfe1c58dfbcd9842fd43e1aaf8a795fbc237f65efcc860a3ef457b318e73f29a4f4a28f6403c3d653d021d960e4632dd45bde54a9
-  languageName: node
-  linkType: hard
-
 "commander@npm:^4.1.1":
   version: 4.1.1
   resolution: "commander@npm:4.1.1"
@@ -2895,7 +2888,6 @@ __metadata:
     "@electron/fuses": "npm:^1.8.0"
     electron: "npm:31.3.1"
     electron-squirrel-startup: "npm:^1.0.1"
-    fvonts: "npm:0.1.6"
     update-electron-app: "npm:^3.0.0"
   languageName: unknown
   linkType: soft
@@ -3343,17 +3335,6 @@ __metadata:
   version: 1.1.2
   resolution: "function-bind@npm:1.1.2"
   checksum: 10c0/d8680ee1e5fcd4c197e4ac33b2b4dce03c71f4d91717292785703db200f5c21f977c568d28061226f9b5900cbcd2c84463646134fd5337e7925e0942bc3f46d5
-  languageName: node
-  linkType: hard
-
-"fvonts@npm:0.1.6":
-  version: 0.1.6
-  resolution: "fvonts@npm:0.1.6"
-  dependencies:
-    commander: "npm:^12.1.0"
-  bin:
-    fvonts: index.js
-  checksum: 10c0/484a61ddd554edd285255919815a777a88ee16080af07e5d70efe474e4c6dfc89edea265ea45964139d3ca9ad5c3b75bd40e538c654a7e86f69a8b9e1ddb21d4
   languageName: node
   linkType: hard
 

@@ -10,14 +10,31 @@ body {
     padding: 0 20px;
     min-height: 100vh;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: var(--slate-950);
     color: var(--red-500);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    position: relative;
 }
 .banner {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    h1 {
+        font-size: 5.875rem;
+    }
+}
+h3 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: auto;
+    top: auto;
 }

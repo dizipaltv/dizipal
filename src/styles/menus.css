@@ -4,10 +4,9 @@
     box-sizing: border-box;
 }
 body {
-    padding: 0;
     margin: 0;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 10px;
     min-height: 100vh;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     display: grid;
@@ -38,9 +37,6 @@ a {
 main,footer,header {
     width: 100%;
 }
-header {
-    text-align: center;
-}
 table {
     width: 100%;
     border: 1px solid var(--slate-900);
@@ -57,7 +53,8 @@ table {
         }
     }
 }
-#settings {
+
+#settings,#version_infos {
     color: var(--slate-300);
     font-size: large;
     width: 100%;
@@ -69,6 +66,7 @@ table {
             width: 100%;
             border: 1px solid var(--slate-900);
             td {
+                padding: 5px;
                 width: 50%;
                 border: 1px solid var(--slate-900);
             }
@@ -118,4 +116,8 @@ table {
 .btn-full {
     width: 100%;
     display: block;
+}
+fieldset {
+    border-radius: 4px;
+    border-color: var(--slate-700);
 }

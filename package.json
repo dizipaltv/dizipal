@@ -1,15 +1,13 @@
 {
   "name": "dizipal",
   "productName": "Dizipal",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Dizipal application that can work in the desktop environment.",
   "main": "src/index.js",
   "scripts": {
-    "start": "yarn dizipal && electron-forge start",
-    "package": "yarn dizipal && electron-forge package",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
     "make": "electron-forge make",
-    "template": "fvonts tmt Dizipal",
-    "dizipal": "yarn template && node placeholder.js",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
@@ -25,8 +23,7 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/publisher-github": "^7.4.0",
     "@electron/fuses": "^1.8.0",
-    "electron": "31.3.1",
-    "fvonts": "0.1.6"
+    "electron": "31.3.1"
   },
   "keywords": [],
   "author": {

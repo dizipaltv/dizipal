@@ -1,4 +1,5 @@
 const { app, BrowserWindow, session, ipcMain, Menu, nativeTheme } = require('electron');
+const { Api } = require("./api");
 const { Menus } = require("./menus");
 const { AdBlocker } = require("./adblocker");
 const { updateElectronApp } = require('update-electron-app');
@@ -19,11 +20,8 @@ const createWindow = (url) => {
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
-    show: false, // Pencereyi otomatik olarak göstermiyoruz
+    show: false,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true,
-      nodeIntegration: false,
       icon: path.join(__dirname, "icons", "icon.png")
     },
     backgroundColor: '#DB2424'
@@ -31,7 +29,7 @@ const createWindow = (url) => {
 
   AdBlocker.blockURLs(session);
   AdBlocker.blockAds(mainWindow);
-
+  
   mainWindow.loadURL(url);
 
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
@@ -48,7 +46,6 @@ const mainPanel = () => {
   Menu.setApplicationMenu(Menus.default);
 
   console.log(`✅ [--app.whenReady--] - DIZIPAL variable has been updated with Config.information, here are the new variable values; \n${JSON.stringify(DIZIPAL)}`);
-
   if (DIZIPAL.currentSiteURL) {
     console.log(`✅ [--app.whenReady--] - Current Site URL updated, current site url : ${DIZIPAL.currentSiteURL}`);
     createWindow(DIZIPAL.currentSiteURL);
@@ -84,9 +81,9 @@ app.on('window-all-closed', () => {
   }
 });
 
-ipcMain.handle('get-site-url', () => {
-  return DIZIPAL.currentSiteURL;
-});
+ipcMain.handle('get-package-info', () => {
+  return Config.getPackageInfo;
+})
 
 ipcMain.handle('get-dizipal', () => {
   return Config.getInformation;
@@ -96,11 +93,11 @@ ipcMain.on('set-dizipal', (event, json) => {
   Config.setInformation(json);
 });
 
+ipcMain.handle('get-api-url', async () => {
+  return await Api.getCurrentSiteURL();
+});
+
 ipcMain.on('restart-app', () => {
   app.relaunch();
   app.exit(0);
-});
-
-ipcMain.on('fetch-url', () => {
-  console.log("fetch url on ipmain");
 });

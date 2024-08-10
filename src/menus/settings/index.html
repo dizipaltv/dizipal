@@ -1,34 +1,65 @@
 <!doctype html>
 <html lang=en>
-    <head>
-        <meta content="script-src 'self' 'unsafe-inline'" http-equiv=Content-Security-Policy>
-        <meta charset=utf-8>
-        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name=viewport>
-        <title>Settings - Dizipal</title>
-        <meta content=ahmetcanisik name=author>
-        <link rel="stylesheet" href=C:\Users\ahmet\Documents\Github\_org\dizipaltv\Repository\dizipal\src\styles\mytheme.min.css>
-        <link rel="stylesheet" href=C:\Users\ahmet\Documents\Github\_org\dizipaltv\Repository\dizipal\src\styles\pattern.css>
-        <link rel="stylesheet" href=C:\Users\ahmet\Documents\Github\_org\dizipaltv\Repository\dizipal\src\styles\menus.css>
-    </head>
-    <body class="pattern-vertical-lines-lg">
-        <header class=list-title><h1>Dizipal Settings</h1></header>
+
+<head>
+    <meta http-equiv="Content-Security-Policy"
+        content="script-src 'self' https://raw.githubusercontent.com 'unsafe-inline';">
+    <meta charset=utf-8>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name=viewport>
+    <title>Ayarlar - Dizipal</title>
+    <meta content=ahmetcanisik name=author>
+    <link rel="stylesheet" href="../../styles/mytheme.min.css">
+    <link rel="stylesheet" href="../../styles/toggle.css">
+    <link rel="stylesheet" href="../../styles/menus.css">
+</head>
+
+<body>
+    <fieldset>
+        <legend>
+            <header class=list-title>
+                <h1>Ayarlar</h1>
+            </header>
+        </legend>
         <main>
             <table id="settings">
                 <tbody>
                     <tr>
-                        <td colspan="2"><label for="adBlockerEnabled">AdBlocker Enabled?</label><input id="adBlockerEnabled" type="checkbox" disabled readonly checked></td>
+                        <td><label for="currentSiteURL">Dizipal site bağlantısı</label></td>
+                        <td>
+                            <input class="inp" id="currentSiteURL" type="text">
+                        </td>
+                        <td>
+                            <button id="syncURL" class="btn" type="button">eşle</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="currentSiteURL">Dizipal Güncel Adres</label></td>
-                        <td><input class="inp" id="currentSiteURL" type="text"></td>
+                        <td>Güncel adresi açılışta eşle</td>
+                        <td colspan="2">
+                            <label class="switch red">
+                                <input type="checkbox" disabled readonly>
+                                <span class="slider-red round"></span>
+                            </label>
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><button type="button" class="btn btn-full" id="saveChanges">Değişiklikleri Kaydet</button></td>
+                        <td>Reklamlar engellensin mi?</td>
+                        <td colspan="2">
+                            <label class="switch red">
+                                <input type="checkbox" disabled readonly checked>
+                                <span class="slider-red round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><button type="button" class="btn btn-full" id="saveChanges">Değişiklikleri
+                                Kaydet</button></td>
                     </tr>
                 </tbody>
             </table>
         </main>
+    </fieldset>
 
-        <script src="C:\Users\ahmet\Documents\Github\_org\dizipaltv\Repository\dizipal\src\menus\settings\renderer.js"></script>
-    </body>
+    <script src="./renderer.js"></script>
+</body>
+
 </html>

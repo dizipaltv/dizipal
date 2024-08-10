@@ -50,6 +50,11 @@ class AdBlocker {
                         const vast = document.getElementById('vast');
                         const vast_new = document.getElementById('vast_new');     
                         const pre_player = document.querySelector('.pre-player');
+                        const bottomAd = document.querySelector('#bottomAd a');
+
+                        if (bottomAd) {
+                            bottomAd.click();
+                        }
 
                         if (vast_new) {
                             vast_new.style.display = 'block';

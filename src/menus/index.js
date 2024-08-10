@@ -1,9 +1,9 @@
-const {BrowserWindow, shell, Menu} = require("electron");
+const { BrowserWindow, shell, Menu } = require("electron");
 const path = require("path");
 
 class Menus {
-    static #aboutWindow = null; // AboutWindow örneğini saklayacak alan
-    static #settingsWindow = null; // settingsWindow örneğini saklayacak alan
+    static #aboutWindow = null;
+    static #settingsWindow = null;
     static #isMac = process.platform === "darwin";
 
     static get default() {
@@ -12,39 +12,52 @@ class Menus {
                 label: 'Dizipal',
                 submenu: [
                     {
-                        label: "Settings",
+                        label: "Ayarlar",
                         click() {
                             Menus.SettingsWindow();
                         }
                     },
                     {
-                        label: 'About',
+                        label: 'Hakkında',
                         click() {
                             Menus.AboutWindow();
                         }
                     },
-                    Menus.#isMac ? { role: "close" } : { role: 'quit' }
+                    Menus.#isMac ? { role: "close", label: "Çıkış" } : { role: 'quit', label: "Çıkış" }
                 ]
             },
             {
-                label: 'Edit',
+                label: 'Düzenle',
                 submenu: [
-                    { role: 'undo' },
-                    { role: 'redo' },
+                    { role: 'undo', label: "Geri Al" },
+                    { role: 'redo', label: "Yinele" },
                     { type: 'separator' },
-                    { role: 'cut' },
-                    { role: 'copy' },
-                    { role: 'paste' },
+                    { role: 'cut', label: "Kes" },
+                    { role: 'copy', label: 'Kopyala' },
+                    { role: 'paste', label: "Yapıştır" },
                     { type: 'separator' },
-                    { role: 'selectall' }
+                    { role: 'selectall', label: "Tümünü Seç" }
                 ]
             },
             {
-                label: "View",
+                label: "Görünüm",
                 submenu: [
-                    { role: "reload" },
-                    { role: "forceReload" },
-                    { role: 'toggleDevTools' }
+                    { role: "reload", label: "Sayfayı Yenile" },
+                    { role: "forceReload", label: "Sayfayı Zorla Yenile" },
+                    { role: 'toggleDevTools', label: "Geliştirici Konsolunu Aç" }
+                ]
+            }
+        ]);
+    }
+
+    static get develop() {
+        return Menu.buildFromTemplate([
+            {
+                label: "Görünüm",
+                submenu: [
+                    { role: "reload", label: "Sayfayı Yenile" },
+                    { role: "forceReload", label: "Sayfayı Zorla Yenile" },
+                    { role: 'toggleDevTools', label: "Geliştirici Konsolunu Aç" }
                 ]
             }
         ]);
@@ -52,26 +65,23 @@ class Menus {
 
     static AboutWindow() {
         if (Menus.#aboutWindow) {
-            // Zaten açık bir pencere varsa, o pencereyi ön planda yap
             Menus.#aboutWindow.focus();
             return;
         }
 
         Menus.#aboutWindow = new BrowserWindow({
             width: 350,
-            height: 300,
-            title: 'About',
-            icon: path.join(__dirname, "app", "icons", "png", "info.png"),
+            height: 350,
+            icon: path.join(__dirname, "..", "icons", "icon.png"),
             modal: true,
+            show: false,
+            backgroundColor: '#ef4444',
             parent: BrowserWindow.getFocusedWindow(),
             resizable: false,
             minimizable: false,
             maximizable: false,
-            backgroundColor: "#000000",
             webPreferences: {
-                nodeIntegration: false,
-                contextIsolation: true,
-                preload: path.join(__dirname, "about", 'preload.js')
+                preload: path.join(__dirname, "about", 'preload.js'),
             }
         });
 
@@ -84,35 +94,36 @@ class Menus {
             return { action: 'deny' };
         });
 
+        Menus.#aboutWindow.on('ready-to-show', () => {
+            Menus.#aboutWindow.show();
+        });
+
         Menus.#aboutWindow.setMenu(null);
 
         Menus.#aboutWindow.on('closed', () => {
-            Menus.#aboutWindow = null; // Pencere kapatıldığında referansı temizle
+            Menus.#aboutWindow = null;
         });
     }
 
     static SettingsWindow() {
         if (Menus.#settingsWindow) {
-            // Zaten açık bir pencere varsa, o pencereyi ön planda yap
             Menus.#settingsWindow.focus();
             return;
         }
 
         Menus.#settingsWindow = new BrowserWindow({
-            width: 600,
-            height: 400,
-            title: 'Settings',
-            icon: path.join(__dirname, "app", "icons", "png", "info.png"),
+            width: 650,
+            height: 420,
+            icon: path.join(__dirname, "..", "icons", "icon.png"),
             modal: true,
+            backgroundColor: '#ef4444',
             parent: BrowserWindow.getFocusedWindow(),
             resizable: false,
             minimizable: false,
             maximizable: false,
-            backgroundColor: "#000000",
+            show: false,
             webPreferences: {
-                nodeIntegration: false,
-                contextIsolation: true,
-                preload: path.join(__dirname, "settings", 'preload.js')
+                preload: path.join(__dirname, "settings", 'preload.js'),
             }
         });
 
@@ -127,8 +138,12 @@ class Menus {
 
         Menus.#settingsWindow.setMenu(null);
 
+        Menus.#settingsWindow.on('ready-to-show', () => {
+            Menus.#settingsWindow.show();
+        });
+
         Menus.#settingsWindow.on('closed', () => {
-            Menus.#settingsWindow = null; // Pencere kapatıldığında referansı temizle
+            Menus.#settingsWindow = null;
         });
     }
 

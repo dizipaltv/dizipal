@@ -4,40 +4,48 @@
         <meta content="script-src 'self' 'unsafe-inline'" http-equiv=Content-Security-Policy>
         <meta charset=utf-8>
         <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name=viewport>
-        <title>About - Dizipal</title>
+        <title>Hakkında - Dizipal</title>
         <meta content=ahmetcanisik name=author>
-        <link rel="stylesheet" href=C:\Users\ahmet\Documents\Github\_org\dizipaltv\Repository\dizipal\src\styles\mytheme.min.css>
-        <link rel="stylesheet" href=C:\Users\ahmet\Documents\Github\_org\dizipaltv\Repository\dizipal\src\styles\pattern.css>
-        <link rel="stylesheet" href=C:\Users\ahmet\Documents\Github\_org\dizipaltv\Repository\dizipal\src\styles\menus.css>
+        <link rel="stylesheet" href="../../styles/mytheme.min.css">
+        <link rel="stylesheet" href="../../styles/menus.css">
     </head>
-    <body class="pattern-vertical-lines-lg">
-        <header class=list-title>
-            <h1>About - Dizipal</h1>
-        </header>
-        <main>
-            <table>
-                <tbody id="version_infos">
-                    <tr>
-                        <td>
-                            <code class="key">Version</code>
-                        </td>
-                        <td>
-                            <code class="value">1.0.1</code>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </main>
-        <footer>
-            <code>
-                by <a class=link href="https://ahmetcanisik.com" target=_blank>ahmetcanisik</a> | <a class=link href=https://github.com/dizipaltv/dizipal target=_blank>Github</a>
-            </code>
-        </footer>
+    <body>
+        <fieldset>
+            <legend>
+                <header class=list-title>
+                    <h1>Hakkında</h1>
+                </header>
+            </legend>
+            <main>
+                <table>
+                    <tbody id="version_infos">
+                        <tr>
+                            <td>
+                                <code class="key">dizipal</code>
+                            </td>
+                            <td>
+                                <code class="value" id="version_value">1.0.1</code>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <code>
+                                    <span>by</span> <a class=link id="author_infos" href="https://ahmetcanisik.com" target=_blank>ahmetcanisik</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    | <a class="link" id="github_repository" href="https://github.com/dizipaltv/dizipal" target="_blank">Github</a>
+                                </code>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </main>
+        </fieldset>
 
-        <script>
-            window.addEventListener('DOMContentLoaded', () => {
-                document.body.innerHTML += process.platform;
-            })
-        </script>
+        <script src="./renderer.js"></script>
     </body>
 </html>

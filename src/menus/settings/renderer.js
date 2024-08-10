@@ -1,18 +1,24 @@
 window.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Veriyi almak için ipcRenderer.invoke kullanın
         let information = await window.electronAPI.getDizipal();
-        console.log(information);
+        
         let currentSiteURL = document.getElementById('currentSiteURL');
-        const saveButton = document.getElementById('saveChanges');
-
-        // Veriyi HTML elemanlarına atayın
         currentSiteURL.value = information.currentSiteURL;
 
+        const saveButton = document.getElementById('saveChanges');
         saveButton.addEventListener('click', () => {
             information.currentSiteURL = currentSiteURL.value;
             window.electronAPI.setDizipal(information);
             window.electronAPI.reOpenApp();
+        });
+
+        const syncURL = document.getElementById('syncURL');
+        syncURL.addEventListener('click', async () => {
+            const csURL = await window.electronAPI.getApiURL();
+            const inf = information;
+            inf.currentSiteURL = csURL;
+            window.electronAPI.setDizipal(inf);
+            currentSiteURL.value = csURL;
         });
     } catch (error) {
         console.error('Veri alma hatası:', error);

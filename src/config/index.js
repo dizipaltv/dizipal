@@ -33,6 +33,10 @@ class Config {
         console.log(`✅ [--config.Config.setInformation--] - successfully setted informations!`);
     }
 
+    static get getPackageInfo() {
+        return Sync.read_json(path.join(__dirname, "..", "..", "package.json"));
+    }
+
     static get getInformation() {
         Config.check();
         console.log(`✅ [--config.Config.getInformation--] - Getting informations!`);

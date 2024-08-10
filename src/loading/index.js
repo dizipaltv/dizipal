@@ -1,4 +1,4 @@
-const { BrowserWindow, Menu } = require("electron");
+const { BrowserWindow } = require("electron");
 const path = require("path");
 
 class Loading {
@@ -6,27 +6,29 @@ class Loading {
     
     static createWindow() {
         Loading.window = new BrowserWindow({
-            width: 400,
-            height: 200,
+            width: 600,
+            height: 300,
             frame: false,
-            webPreferences: {
-                preload: path.join(__dirname, "preload.js"),
-                contextIsolation: true,
-                nodeIntegration: false,
-                icon: path.join(__dirname, "icons", "icon.png")
-            }
+            show: false
+        });
+
+        Loading.window.once('ready-to-show', () => {
+            Loading.window.show();
         });
 
         Loading.window.loadFile(path.join(__dirname, "index.html"));
     }
 
     static show() {
-        Loading.createWindow();
+        if (!Loading.window) {
+            Loading.createWindow();
+        }
     }
 
     static destroy() {
         if (Loading.window) {
             Loading.window.destroy();
+            Loading.window = null;
         }
     }
 }

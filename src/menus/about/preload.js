@@ -1,6 +1,12 @@
+const { contextBridge, ipcRenderer } = require("electron");
+
+contextBridge.exposeInMainWorld("electronAPI", {
+    getPackageInfo: () => ipcRenderer.invoke("get-package-info")
+})
+
 window.addEventListener('DOMContentLoaded', () => {
     const versions = {
-        os: process.platform,
+        sistem: process.platform,
         node: process.versions.node,
         chrome: process.versions.chrome,
         electron: process.versions.electron
@@ -20,6 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const tdValue = document.createElement('td');
             const valueCode = document.createElement('code');
             valueCode.classList.add('value');
+            valueCode.id = `${key}_value`;
             valueCode.textContent = value;
             tdValue.appendChild(valueCode);
             tr.appendChild(tdValue);
