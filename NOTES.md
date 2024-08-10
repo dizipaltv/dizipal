@@ -10,6 +10,7 @@
 * Src klasörünü js minifier, css minifier, image minifier yardımlarıyla sıkıştıracağım.
 * Scripts altına yarn minifier adında bir komut daha yerleştireceğim ve bu komut, package, start ve publish komutlarıyla birlikte çalışacak.
 
-## 1.3.0 Ayarlar Seçeneği Güncellenecek
+## 1.3.0 Log kayıtları tutmak ve Ayarlar Seçeneği Güncellemek
 * Güncel adresi açılışta otomatik olarak kontrol etme özelliği eklenecek.
 * Reklam engelleyiciyi kapatıp açma özelliği eklenecek.
+* [winston](https://www.npmjs.com/package/winston) paketini kullanarak bir log kaydı tutulacak.
