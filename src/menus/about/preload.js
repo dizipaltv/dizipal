@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer } = require("electron");
+const { contextBridge, ipcRenderer, app } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
     getPackageInfo: () => ipcRenderer.invoke("get-package-info")

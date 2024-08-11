@@ -2,7 +2,6 @@ const path = require('path');
 const { Sync } = require('./src/filer');
 const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
-const { platform } = require('os');
 
 const INFO = Sync.read_json(path.join(__dirname, "package.json"));
 
@@ -10,11 +9,6 @@ module.exports = {
   packagerConfig: {
     asar: true,
     name: "dizipal",
-    ignore: [
-      "^/template/",
-      "^/fvonts.config.js$",
-      "^/placeholder.js$"
-    ],
     executableName: "dizipal",
     icon: path.join(__dirname, 'src/icons/icon'),
     win32metadata: {
@@ -35,11 +29,19 @@ module.exports = {
       },
     },
     {
-      name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      name: '@electron-forge/maker-deb',
+      platform: ["linux"],
+      config: {
+        bin: INFO.ProductName,
+        maintainer: INFO.author.name,
+        homepage: INFO.author.url,
+        categories: ['Sound & Video'],
+        description: 'Dizipal application that can work in the desktop environment.',
+        icon: path.join(__dirname, 'src/icons/icon.png')
+      },
     },
     {
-      name: '@electron-forge/maker-deb',
+      name: '@electron-forge/maker-rpm',
       platform: ["linux"],
       config: {
         bin: INFO.ProductName,
