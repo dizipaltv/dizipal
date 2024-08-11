@@ -33,6 +33,43 @@ Merhabalar ücretsiz film izlemeyi sevenler topluluğu. Sizler için Dizipal'in 
 
 <br />
 
+
+## Nasıl Özelleştirilir
+Evet ufak özelleştirme seçenekleri de bulunmaktadır. Özelleştirme yaomak için şu adımları izleyiniz <br />
+
+### 1. Özelleştirme Dosyasını Açmak
+#### 1.1 Windows ta özelleştirme dosyasını açmak
+**PowerShell**'i veya **CMD**'yi açınız ve ardından kendi editorünüz ile `C:/Users/<ismin>/AppData/Roaming/Dizipal/.dizipalrc` dosyasını açınız.
+İşte Kendi ismim olan **can** ile size bir örnek;
+```
+notepad C:/Users/can/AppData/Roaming/Dizipal/.dizipalrc
+```
+
+#### 1.2 Linux ta özelleştirme dosyasını açmak
+terminalinizi açınız ve ardından kendi editorünüz ile `~/AppData/Roaming/Dizipal/.dizipalrc` dosyasını açınız.
+**Linux Mint 22 Wilma** kullanan ben için işte bir örnek;
+```
+xed ~/AppData/Roaming/Dizipal/.dizipalrc
+```
+
+
+### 2. Neler özelleştirilebilir?
+#### 2.1 İşte özelleştirebileceklerinizin bir listesi
+
+> [!NOTE]     
+> Versiyon 0.1.0 için sadece aşağıda gösterilen alanlar çalışmaktadır. Diğer seçenekler Bu sürüm itibariyle geliştirme aşamasındadır.
+
+##### 2.1.1 - Güncel Dizipal Adresini El ile değiştirebilirsiniz. Herhangi bir websitesi adresi girdiğinizde ve uygulamayı tekrar başlattığınızda o websitesinin açıldığını göreceksiniz.
+```json
+{
+  //...
+  "currentSiteURL": "https://dizipal738.com",
+  //...
+}
+```
+
+
+
 ## Geliştiriciler için yükleme talimatları:
 
 Kaynak kodlarıyla oynamak kendinize göre değiştirmeniz için birkaç bilgi sunacağım: Kullandığım,
@@ -93,19 +130,15 @@ yarn start
 
 #### Daha fazla komuta nasıl ulaşabilirim?
 Evet daha birkaç komut daha mevcut bunları [package.json](package.json) içerisinde `"scripts"` altında bulabilirsiniz.
-işte versiyon 1.0.0 için kullanılan komutlar
-```json
-"scripts": {
-    "start": "electron-forge start",
-    "package": "yarn dizipal && electron-forge package",
-    "build": "yarn package && yarn make --platform win32 && yarn make --platform linux && yarn make --platform darwin",
-    "make": "electron-forge make",
-    "template": "fvonts tmt Dizipal",
-    "dizipal": "yarn template && node placeholder.js",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
+işte versiyon 0.1.0 için kullanılan komutlar
 ```
+start     : "electron-forge start",
+package   : "electron-forge package",
+make      : "electron-forge make",
+publish   : "electron-forge publish",
+lint      : "echo \"No linting configured\""
+```
+
 <br /><br />
 
 LICENSE : [MIT](LICENSE)
