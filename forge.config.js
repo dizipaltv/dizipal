@@ -30,6 +30,21 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
+<<<<<<< HEAD
+=======
+      platform: ["linux"],
+      config: {
+        bin: INFO.ProductName,
+        maintainer: INFO.author.name,
+        homepage: INFO.author.url,
+        categories: ['Sound & Video'],
+        description: 'Dizipal application that can work in the desktop environment.',
+        icon: path.join(__dirname, 'src/icons/icon.png')
+      },
+    },
+    {
+      name: '@electron-forge/maker-rpm',
+>>>>>>> 7323df4f0bdb2a8d30e4a61c49c20ae8c37b6a36
       platform: ["linux"],
       config: {
         bin: INFO.ProductName,

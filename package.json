@@ -36,6 +36,7 @@
   "license": "MIT",
   "packageManager": "yarn@4.4.0",
   "dependencies": {
+    "@electron-forge/maker-rpm": "^7.4.0",
     "electron-squirrel-startup": "^1.0.1"
   }
 }
