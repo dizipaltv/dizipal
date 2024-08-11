@@ -41,6 +41,9 @@ module.exports = {
       name: '@electron-forge/maker-deb',
       platforms: ['linux'],
       config: {
+        bin: INFO.ProductName,
+        maintainer: INFO.author.name,
+        homepage: INFO.author.url,
         categories: ['Media & Entertainment'],
         description: 'Dizipal application that can work in the desktop environment.',
         icon: path.join(__dirname, 'src/icons/icon.png')
@@ -73,7 +76,7 @@ module.exports = {
           name: 'dizipal'
         },
         prerelease: false,
-        draft: false
+        draft: true
       }
     }
   ]

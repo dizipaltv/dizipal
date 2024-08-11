@@ -39,6 +39,6 @@
   "packageManager": "yarn@4.4.0",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
-    "update-electron-app": "^3.0.0"
+    "electron-updater": "6.2.1"
   }
 }
