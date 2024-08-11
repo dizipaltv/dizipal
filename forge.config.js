@@ -1,7 +1,8 @@
-const path = require('node:path');
+const path = require('path');
 const { Sync } = require('./src/filer');
 const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
+const { platform } = require('os');
 
 const INFO = Sync.read_json(path.join(__dirname, "package.json"));
 
@@ -27,28 +28,28 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        name: 'Dizipal',
+        name: "Dizipal",
         setupExe: `${INFO.name}_${INFO.version}_win64.exe`,
         setupIcon: path.join(__dirname, 'src/icons/icon.ico'),
         iconUrl: path.join(__dirname, 'src/icons/icon.ico')
-      }
+      },
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin']
+      platforms: ['darwin'],
     },
     {
       name: '@electron-forge/maker-deb',
-      platforms: ['linux'],
+      platform: ["linux"],
       config: {
         bin: INFO.ProductName,
         maintainer: INFO.author.name,
         homepage: INFO.author.url,
-        categories: ['Media & Entertainment'],
+        categories: ['Sound & Video'],
         description: 'Dizipal application that can work in the desktop environment.',
         icon: path.join(__dirname, 'src/icons/icon.png')
-      }
-    },
+      },
+    }
   ],
   plugins: [
     {
@@ -66,18 +67,5 @@ module.exports = {
       [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
-  ],
-  publishers: [
-    {
-      name: '@electron-forge/publisher-github',
-      config: {
-        repository: {
-          owner: 'dizipaltv',
-          name: 'dizipal'
-        },
-        prerelease: false,
-        draft: true
-      }
-    }
   ]
-}
+};

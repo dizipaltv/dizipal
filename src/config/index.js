@@ -6,7 +6,8 @@ class Config {
     static BASIC_CONFIGS = {
         "currentSiteURL": "https://dizipal738.com",
         "latestAdress": 738,
-        "adBlocker": true
+        "adBlocker": true,
+        "checkAdressOnStartup": false
     }
     static CONFIG_FOLDER = path.join(os.homedir(), 'AppData', 'Roaming', 'Dizipal');
     static CONFIG_FILE = path.join(Config.CONFIG_FOLDER, ".dizipalrc");
@@ -19,7 +20,25 @@ class Config {
             // if not exist config file
             if (!Sync.file_there(Config.CONFIG_FILE)) {
                 Sync.update_json(Config.CONFIG_FILE, Config.BASIC_CONFIGS);
+            };
+
+            // if basic_config keys doesn't exist
+            if (Sync.file_there(Config.CONFIG_FILE)) {
+                const _file = Sync.read_json(Config.CONFIG_FILE);
+
+                // Iterate over each entry in BASIC_CONFIGS
+                Object.entries(Config.BASIC_CONFIGS).forEach(([key, value]) => {
+                    // Check if the key is not present in _file
+                    if (!_file.hasOwnProperty(key)) {
+                        // Add the key-value pair to _file
+                        _file[key] = value;
+                    }
+                });
+
+                // Update the CONFIG_FILE with the new content
+                Sync.update_json(Config.CONFIG_FILE, _file);
             }
+
 
             console.log(`✅ [--config.Config.check--] - All checked passed!`);
         } catch (err) {

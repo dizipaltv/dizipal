@@ -2,7 +2,6 @@ const { app, BrowserWindow, session, ipcMain, Menu, nativeTheme } = require('ele
 const { Api } = require("./api");
 const { Menus } = require("./menus");
 const { AdBlocker } = require("./adblocker");
-const { autoUpdater } = require('electron-updater');
 const { Config } = require("./config");
 const { Loading } = require("./loading");
 const path = require('path');
@@ -58,19 +57,6 @@ const mainPanel = () => {
 }
 
 app.on('ready', () => {
-  // Güncellemeleri kontrol et
-  autoUpdater.checkForUpdatesAndNotify();
-
-  // Güncelleme indirme ve yükleme
-  autoUpdater.on('update-available', () => {
-    console.log('Update available.');
-  });
-
-  autoUpdater.on('update-downloaded', () => {
-    console.log('Update downloaded.');
-    autoUpdater.quitAndInstall();
-  });
-
   Loading.show();
 });
 
