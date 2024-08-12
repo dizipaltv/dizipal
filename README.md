@@ -9,7 +9,7 @@ Merhabalar ücretsiz film izlemeyi sevenler topluluğu. Sizler için Dizipal'in 
 
 > [!IMPORTANT]      
 > Sorumluluk tamamen kullanan kullanıcıya aittir. Herhangi bir mesuliyet kabul etmiyorum.     
-> Şu anda sadece Windows için yüklenebilir.     
+> Şu anda sadece Linux ve Windows için yüklenebilir.     
 
 
 <br /><br />
