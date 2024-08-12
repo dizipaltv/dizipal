@@ -1,4 +1,5 @@
 # Açık Kaynak Kodlu Dizipal Masaüstü Uygulaması
+[![Dizipal Downloads](https://img.shields.io/github/downloads/dizipaltv/dizipal/total.svg?style=flat&label=Toplam%20İndirme)](https://github.com/dizipaltv/dizipal/releases)
 
 ![Dizipal Hakkinda](https://cdn.jsdelivr.net/gh/dizipaltv/assets/pictures/boydan-al-guzum.webp)
 ![Dizipal Hakkinda](https://cdn.jsdelivr.net/gh/dizipaltv/assets/pictures/arama-cibiki.webp)
