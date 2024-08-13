@@ -6,13 +6,12 @@ const os = require("os");
 class Config {
     static BASIC_CONFIGS = {
         "currentSiteURL": "https://dizipal738.com",
-        "latestAdress": 738,
         "adBlocker": true,
-        "checkAdressOnStartup": false
+        "checkAdressOnStartup": true
     }
     static CONFIG_FOLDER = path.join(os.homedir(), 'AppData', 'Roaming', 'Dizipal');
     static CONFIG_FILE = path.join(Config.CONFIG_FOLDER, ".dizipalrc");
-    static check() {
+    static async check() {
         try {
             // if config folder not exist 
             SyncFile.make_dir(Config.CONFIG_FOLDER);

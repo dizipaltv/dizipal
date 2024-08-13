@@ -1,5 +1,5 @@
 const { BrowserWindow, Menu, session } = require("electron");
-const { App, AdBlocker } = require("../../components");
+const { AdBlocker, Config } = require("../../components");
 const { Menus } = require("../../menus");
 const path = require("path");
 
@@ -12,14 +12,16 @@ class MainScreen {
             height: 768,
             show: false,
             webPreferences: {
-                icon: path.join(App.mainDir, "src", "images", "icons", "icon.png")
+                icon: path.join(__dirname, "..", "..", "preload.js")
             }
         });
 
         Menu.setApplicationMenu(Menus.default);
 
-        AdBlocker.blockURLs(session);
-        AdBlocker.blockAds(MainScreen.window);
+        if (Config.getInformation.adBlocker) {
+          AdBlocker.blockURLs(session);
+          AdBlocker.blockAds(MainScreen.window);
+        }
 
         MainScreen.window.loadURL(url);
 
@@ -49,7 +51,9 @@ class MainScreen {
     }
 
     static show() {
-      MainScreen.window.show();
+      if (MainScreen.window) {
+        MainScreen.window.show();
+      }
     }  
     
      static destroy() {

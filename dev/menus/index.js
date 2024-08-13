@@ -1,5 +1,5 @@
 const { BrowserWindow, shell, Menu } = require("electron");
-const { App, Config } = require("../components");
+const { Config } = require("../components");
 const path = require("path");
 
 class Menus {
@@ -85,8 +85,8 @@ class Menus {
         }
 
         Menus.#aboutWindow = new BrowserWindow({
-            width: 350,
-            height: 350,
+            width: 400,
+            height: 400,
             icon: path.join(__dirname, "..", "images", "icons", "icon.png"),
             modal: true,
             show: false,
@@ -96,7 +96,7 @@ class Menus {
             minimizable: false,
             maximizable: false,
             webPreferences: {
-                preload: path.join(__dirname, "about", 'preload.js'),
+                preload: path.join(__dirname, "about", "preload.js")
             }
         });
 
@@ -138,7 +138,7 @@ class Menus {
             maximizable: false,
             show: false,
             webPreferences: {
-                preload: path.join(__dirname, "settings", 'preload.js'),
+                preload: path.join(__dirname, "..", "preload.js")
             }
         });
 

@@ -26,9 +26,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    h1 {
-        font-size: 5.875rem;
-    }
+}
+.banner h1 {
+    font-size: 5.875rem;
 }
 .loading {
     display: flex;

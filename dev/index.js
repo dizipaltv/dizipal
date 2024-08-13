@@ -3,6 +3,17 @@ const { Alert, Api, Config } = require("./components");
 const { LoadingScreen, MainScreen } = require("./screens");
 const path = require('path');
 
+let LOADING_ISDONE = false;
+
+function setLoadingIsDone(isDone) {
+  LOADING_ISDONE = isDone;
+  if (LOADING_ISDONE) {
+    setTimeout(() => {
+      LoadingScreen.destroy();
+      MainScreen.show();
+    }, 2000);
+  }
+}
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
@@ -22,17 +33,14 @@ app.whenReady().then(() => {
     MainScreen.createWindow(path.join(__dirname, "settings.html"));
   }
 
+  MainScreen.window.once('ready-to-show', () => {
+    setLoadingIsDone(true);
+  });
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       MainScreen.createWindow(Config.DIZIPAL.currentSiteURL);
     }
-  });
-
-  MainScreen.window.once('ready-to-show', () => {
-    setTimeout(() => {
-      LoadingScreen.destroy();
-      MainScreen.show();
-    }, 2000);
   });
 });
 
@@ -44,7 +52,11 @@ app.on('window-all-closed', () => {
 
 ipcMain.handle('get-package-info', () => {
   return Config.getPackageInfo;
-})
+});
+
+ipcMain.handle('get-package-version', () => {
+  return app.getVersion;
+});
 
 ipcMain.handle('get-dizipal', () => {
   return Config.getInformation;
@@ -53,6 +65,10 @@ ipcMain.handle('get-dizipal', () => {
 ipcMain.handle('get-api-url', async () => {
   return await Api.getCurrentSiteURL();
 });
+
+ipcMain.on('loading-is-done', (event, decision) => {
+  setLoadingIsDone(decision);
+})
 
 ipcMain.on('set-dizipal', (event, json) => {
   Config.setInformation(json);

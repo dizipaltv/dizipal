@@ -1,6 +1,11 @@
 window.addEventListener('DOMContentLoaded', async () => {
     try {
+        const ckAdressSwitch = document.getElementById('checkAdressOnStartupSwitch');
+        const adBlockerSwitch = document.getElementById('adBlockerSwitch');
         let information = await window.electronAPI.getDizipal();
+
+        ckAdressSwitch.checked = information.checkAdressOnStartup;
+        adBlockerSwitch.checked = information.adBlocker;
         
         let currentSiteURL = document.getElementById('currentSiteURL');
         currentSiteURL.value = information.currentSiteURL;
@@ -8,6 +13,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const saveButton = document.getElementById('saveChanges');
         saveButton.addEventListener('click', async () => {
             information.currentSiteURL = currentSiteURL.value;
+            information.checkAdressOnStartup = ckAdressSwitch.checked ? true : false;
+            information.adBlocker = adBlockerSwitch.checked ? true : false;
             await window.electronAPI.setDizipal(information);
             await window.electronAPI.notification({
                 body: "Değişiklikler Kaydedildi! Değişikliklerin uygulanması için uygulama yeniden başlatılıyor..."

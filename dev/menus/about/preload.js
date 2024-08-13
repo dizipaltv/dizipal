@@ -1,8 +1,8 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld("electronAPI", {
-    getPackageInfo: () => ipcRenderer.invoke("get-package-info")
-})
+contextBridge.exposeInMainWorld('aboutAPI', {
+    getPackageInfo: () => ipcRenderer.invoke('get-package-info')
+});
 
 window.addEventListener('DOMContentLoaded', () => {
     const versions = {
