@@ -5,10 +5,9 @@
   "description": "Dizipal application that can work in the desktop environment.",
   "main": "src/index.js",
   "scripts": {
-    "start": "electron-forge start",
-    "copy": "node scripts/copy-folder.js",
-    "minifier": "yarn copy && yarn minify src/**/*.{js,css,html}",
-    "package": "electron-forge package",
+    "start": "yarn minify && electron-forge start",
+    "minify": "node scripts/minify.js",
+    "package": "yarn minify && electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
@@ -24,8 +23,10 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron/fuses": "^1.8.0",
+    "clean-css": "^5.3.3",
     "electron": "31.3.1",
     "fs-extra": "^11.2.0",
+    "html-minifier-terser": "^7.2.0",
     "terser": "^5.31.6"
   },
   "keywords": [],

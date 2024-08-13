@@ -36,7 +36,7 @@ module.exports = {
         bin: INFO.ProductName,
         maintainer: INFO.author.name,
         homepage: INFO.author.url,
-        categories: ['Sound & Video'],
+        categories: ['Video', 'Movie', 'Series'],
         description: 'Dizipal application that can work in the desktop environment.',
         icon: path.join(ICON_FOLDER, 'icon.png')
       },
@@ -48,7 +48,7 @@ module.exports = {
         bin: INFO.ProductName,
         maintainer: INFO.author.name,
         homepage: INFO.author.url,
-        categories: ['Sound & Video'],
+        categories: ['Video', 'Movie', 'Series'],
         description: 'Dizipal application that can work in the desktop environment.',
         icon: path.join(ICON_FOLDER, 'icon.png')
       },
