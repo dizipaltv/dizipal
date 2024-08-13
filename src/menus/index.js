@@ -1,10 +1,10 @@
 const { BrowserWindow, shell, Menu } = require("electron");
+const { App, Config } = require("../components");
 const path = require("path");
 
 class Menus {
     static #aboutWindow = null;
     static #settingsWindow = null;
-    static #isMac = process.platform === "darwin";
 
     static get default() {
         return Menu.buildFromTemplate([
@@ -23,7 +23,22 @@ class Menus {
                             Menus.AboutWindow();
                         }
                     },
-                    Menus.#isMac ? { role: "close", label: "Çıkış" } : { role: 'quit', label: "Çıkış" }
+                    {
+                        label: "Tarayıcıda Aç",
+                        click() {
+                            shell.openExternal(Config.getInformation.currentSiteURL);
+                        }
+                    },
+                    {
+                        label: 'Uygulamayı Yeniden Başlat',
+                        click() {
+                            App.relaunch();
+                        }
+                    },
+                    { 
+                        role: "close",
+                        label: "Uygulamadan Çık"
+                    }
                 ]
             },
             {
@@ -42,15 +57,15 @@ class Menus {
             {
                 label: "Görünüm",
                 submenu: [
-                    { role: "reload", label: "Sayfayı Yenile" },
-                    { role: "forceReload", label: "Sayfayı Zorla Yenile" },
+                    { role: "reload", label: "Siteyi Yeniden Yükle" },
+                    { role: "forceReload", label: "Siteyi Zorla Yeniden Yükle" },
                     { role: 'toggleDevTools', label: "Geliştirici Konsolunu Aç" }
                 ]
             }
         ]);
     }
 
-    static get develop() {
+    static get developMenus() {
         return Menu.buildFromTemplate([
             {
                 label: "Görünüm",
@@ -72,7 +87,7 @@ class Menus {
         Menus.#aboutWindow = new BrowserWindow({
             width: 350,
             height: 350,
-            icon: path.join(__dirname, "..", "icons", "icon.png"),
+            icon: path.join(__dirname, "..", "images", "icons", "icon.png"),
             modal: true,
             show: false,
             backgroundColor: '#ef4444',
@@ -114,7 +129,7 @@ class Menus {
         Menus.#settingsWindow = new BrowserWindow({
             width: 650,
             height: 420,
-            icon: path.join(__dirname, "..", "icons", "icon.png"),
+            icon: path.join(__dirname, "..", "images", "icons", "icon.png"),
             modal: true,
             backgroundColor: '#ef4444',
             parent: BrowserWindow.getFocusedWindow(),
@@ -147,9 +162,16 @@ class Menus {
         });
     }
 
-    static close() {
-        if (Menus.#aboutWindow) {
-            Menus.#aboutWindow.close();
+    static close(window) {
+        if (window === "about") {
+            if (Menus.#aboutWindow) {
+                Menus.#aboutWindow.close();
+            }
+        }
+        if (window === "settings") {
+            if (Menus.#settingsWindow) {
+                Menus.#settingsWindow.close();
+            }
         }
     }
 }

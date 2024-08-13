@@ -30,7 +30,10 @@ body {
         font-size: 5.875rem;
     }
 }
-h3 {
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 0;
     left: 50%;

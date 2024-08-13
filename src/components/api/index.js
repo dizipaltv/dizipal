@@ -35,6 +35,4 @@ class Api {
     
 }
 
-module.exports = {
-    Api,
-}
+module.exports=Api;

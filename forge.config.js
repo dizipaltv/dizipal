@@ -1,16 +1,17 @@
 const path = require('path');
-const { Sync } = require('./src/filer');
+const { SyncFile } = require('./src/components');
 const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
-const INFO = Sync.read_json(path.join(__dirname, "package.json"));
+const INFO = SyncFile.read_json(path.join(__dirname, "package.json"));
+const ICON_FOLDER = path.join(__dirname, "src", "images", "icons");
 
 module.exports = {
   packagerConfig: {
     asar: true,
     name: "dizipal",
     executableName: "dizipal",
-    icon: path.join(__dirname, 'src/icons/icon'),
+    icon: path.join(ICON_FOLDER, "icon"),
     win32metadata: {
       CompanyName: 'Dizipal',
       ProductName: 'Dizipal',
@@ -24,14 +25,12 @@ module.exports = {
       config: {
         name: "Dizipal",
         setupExe: `${INFO.name}_${INFO.version}_win64.exe`,
-        setupIcon: path.join(__dirname, 'src/icons/icon.ico'),
-        iconUrl: path.join(__dirname, 'src/icons/icon.ico')
+        setupIcon: path.join(ICON_FOLDER, 'icon.ico'),
+        iconUrl: path.join(ICON_FOLDER, 'icon.ico')
       },
     },
     {
       name: '@electron-forge/maker-deb',
-<<<<<<< HEAD
-=======
       platform: ["linux"],
       config: {
         bin: INFO.ProductName,
@@ -39,12 +38,11 @@ module.exports = {
         homepage: INFO.author.url,
         categories: ['Sound & Video'],
         description: 'Dizipal application that can work in the desktop environment.',
-        icon: path.join(__dirname, 'src/icons/icon.png')
+        icon: path.join(ICON_FOLDER, 'icon.png')
       },
     },
     {
       name: '@electron-forge/maker-rpm',
->>>>>>> 7323df4f0bdb2a8d30e4a61c49c20ae8c37b6a36
       platform: ["linux"],
       config: {
         bin: INFO.ProductName,
@@ -52,7 +50,7 @@ module.exports = {
         homepage: INFO.author.url,
         categories: ['Sound & Video'],
         description: 'Dizipal application that can work in the desktop environment.',
-        icon: path.join(__dirname, 'src/icons/icon.png')
+        icon: path.join(ICON_FOLDER, 'icon.png')
       },
     }
   ],

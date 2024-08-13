@@ -1,6 +1,7 @@
-const { Sync } = require("../filer");
-const os = require("os");
+const App = require("../app");
+const SyncFile = require("../sync-files");
 const path = require("path");
+const os = require("os");
 
 class Config {
     static BASIC_CONFIGS = {
@@ -14,17 +15,17 @@ class Config {
     static check() {
         try {
             // if config folder not exist 
-            Sync.make_dir(Config.CONFIG_FOLDER);
+            SyncFile.make_dir(Config.CONFIG_FOLDER);
             console.log(`ℹ️ [--config.Config.check--] - The ${Config.CONFIG_FOLDER} folder has been created again.`);
 
             // if not exist config file
-            if (!Sync.file_there(Config.CONFIG_FILE)) {
-                Sync.update_json(Config.CONFIG_FILE, Config.BASIC_CONFIGS);
+            if (!SyncFile.file_there(Config.CONFIG_FILE)) {
+                SyncFile.update_json(Config.CONFIG_FILE, Config.BASIC_CONFIGS);
             };
 
             // if basic_config keys doesn't exist
-            if (Sync.file_there(Config.CONFIG_FILE)) {
-                const _file = Sync.read_json(Config.CONFIG_FILE);
+            if (SyncFile.file_there(Config.CONFIG_FILE)) {
+                const _file = SyncFile.read_json(Config.CONFIG_FILE);
 
                 // Iterate over each entry in BASIC_CONFIGS
                 Object.entries(Config.BASIC_CONFIGS).forEach(([key, value]) => {
@@ -36,7 +37,7 @@ class Config {
                 });
 
                 // Update the CONFIG_FILE with the new content
-                Sync.update_json(Config.CONFIG_FILE, _file);
+                SyncFile.update_json(Config.CONFIG_FILE, _file);
             }
 
 
@@ -48,21 +49,19 @@ class Config {
 
     static setInformation(json) {
         Config.check();
-        Sync.update_json(Config.CONFIG_FILE, json);
+        SyncFile.update_json(Config.CONFIG_FILE, json);
         console.log(`✅ [--config.Config.setInformation--] - successfully setted informations!`);
     }
 
     static get getPackageInfo() {
-        return Sync.read_json(path.join(__dirname, "..", "..", "package.json"));
+        return SyncFile.read_json(path.join(App.mainDir, "package.json"));
     }
 
     static get getInformation() {
         Config.check();
         console.log(`✅ [--config.Config.getInformation--] - Getting informations!`);
-        return Sync.read_json(Config.CONFIG_FILE);
+        return SyncFile.read_json(Config.CONFIG_FILE);
     }
 }
 
-module.exports = {
-    Config,
-}
+module.exports=Config;

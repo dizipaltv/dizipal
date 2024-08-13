@@ -53,7 +53,12 @@ table {
         }
     }
 }
-
+.loading {
+    background-image: url("../images/vectors/loader-red.svg");
+    background-position: center;
+    background-size: cover;
+    color: var(--slate-950);
+}
 #settings,#version_infos {
     color: var(--slate-300);
     font-size: large;

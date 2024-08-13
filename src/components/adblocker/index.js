@@ -86,6 +86,4 @@ class AdBlocker {
     }
 }
 
-module.exports = {
-    AdBlocker,
-};
+module.exports=AdBlocker;
