@@ -7,32 +7,26 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-let DIZIPAL = Config.getInformation;
-
-const mainPanel = () => {
-  nativeTheme.themeSource = "dark";
-
-  console.log(`✅ [--app.whenReady--] - DIZIPAL variable has been updated with Config.information, here are the new variable values; \n${JSON.stringify(DIZIPAL)}`);
-  if (DIZIPAL.currentSiteURL) {
-    console.log(`✅ [--app.whenReady--] - Current Site URL updated, current site url : ${DIZIPAL.currentSiteURL}`);
-    MainScreen.createWindow(DIZIPAL.currentSiteURL);
-  } else {
-    MainScreen.createWindow(path.join(__dirname, "settings.html"));
-  }
-  
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      MainScreen.createWindow(DIZIPAL.currentSiteURL);
-    }
-  });
-}
-
 app.on('ready', () => {
   LoadingScreen.show();
 });
 
 app.whenReady().then(() => {
-  mainPanel();
+  nativeTheme.themeSource = "dark";
+
+  console.log(`✅ [--app.whenReady--] - Config.DIZIPAL variable has been updated with Config.information, here are the new variable values; \n${JSON.stringify(Config.DIZIPAL)}`);
+  if (Config.DIZIPAL.currentSiteURL) {
+    console.log(`✅ [--app.whenReady--] - Current Site URL updated, current site url : ${Config.DIZIPAL.currentSiteURL}`);
+    MainScreen.createWindow(Config.DIZIPAL.currentSiteURL);
+  } else {
+    MainScreen.createWindow(path.join(__dirname, "settings.html"));
+  }
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      MainScreen.createWindow(Config.DIZIPAL.currentSiteURL);
+    }
+  });
 
   MainScreen.window.once('ready-to-show', () => {
     setTimeout(() => {

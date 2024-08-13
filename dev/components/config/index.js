@@ -62,6 +62,8 @@ class Config {
         console.log(`✅ [--config.Config.getInformation--] - Getting informations!`);
         return SyncFile.read_json(Config.CONFIG_FILE);
     }
+
+    static DIZIPAL = Config.getInformation;
 }
 
 module.exports=Config;
