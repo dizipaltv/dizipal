@@ -5,12 +5,12 @@
   "description": "Dizipal application that can work in the desktop environment.",
   "main": "src/index.js",
   "scripts": {
-    "start": "yarn minify && electron-forge start",
     "minify": "node scripts/minify.js",
+    "start": "yarn minify && electron-forge start",
     "package": "yarn minify && electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "build": "yarn package && yarn make",
+    "dev": "electron dev/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

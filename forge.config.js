@@ -16,7 +16,11 @@ module.exports = {
       CompanyName: 'Dizipal',
       ProductName: 'Dizipal',
       FileDescription: 'Dizipal application that can work in the desktop environment.'
-    }
+    },
+    ignore: [
+      /^scripts/,
+      /^dev/
+    ]
   },
   rebuildConfig: {},
   makers: [
