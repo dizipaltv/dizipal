@@ -1,5 +1,5 @@
 const { BrowserWindow, shell, Menu } = require("electron");
-const { Config } = require("../components");
+const { App, Config } = require("../components");
 const path = require("path");
 
 class Menus {

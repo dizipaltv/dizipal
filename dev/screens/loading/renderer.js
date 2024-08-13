@@ -8,6 +8,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (information.checkAdressOnStartup) {
         status.innerText = "Güncel Adres Bilgisi Alınıyor...";
         const url = await window.electronAPI.getApiURL();
+        information.currentSiteURL = url;
+        await window.electronAPI.setDizipal(information);
 
         await window.electronAPI.notification({
             body: `Güncel Adres Güncellendi -> ${url}`

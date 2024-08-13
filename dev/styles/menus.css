@@ -35,19 +35,23 @@ a:active {
     color: var(--red-500);
 }
 main,footer,header {
+    min-width: 100%;
     width: 100%;
 }
 table {
+    min-width: 100%;
     width: 100%;
     border: 1px solid var(--slate-900);
 }
 tbody {
     min-width: 100%;
+    width: 100%;
     border: 1px solid var(--slate-900);
     color: var(--slate-300);
     font-size: large;
 }
 tr {
+    min-width: 100%;
     width: 100%;
     border: 1px solid var(--slate-900);
 }
@@ -57,6 +61,7 @@ td {
     border: 1px solid var(--slate-900);
 }
 .loading {
+    background-color: var(--slate-900);
     background-image: url("../images/vectors/loader-red.svg");
     background-position: center;
     background-size: cover;
