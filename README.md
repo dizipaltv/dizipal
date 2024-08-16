@@ -65,7 +65,7 @@ open -e ~/AppData/Roaming/Dizipal/.dizipalrc
 #### 2.1 İşte özelleştirebileceklerinizin bir listesi
 
 > [!NOTE]     
-> Versiyon 0.1.0 için sadece aşağıda gösterilen alanlar çalışmaktadır. Diğer seçenekler Bu sürüm itibariyle geliştirme aşamasındadır.
+> Versiyon 0.2.5 için sadece aşağıda gösterilen alanlar çalışmaktadır. Diğer seçenekler Bu sürüm itibariyle geliştirme aşamasındadır.
 
 ##### 2.1.1 - Güncel Dizipal Adresini El ile değiştirebilirsiniz. Herhangi bir websitesi adresi girdiğinizde ve uygulamayı tekrar başlattığınızda o websitesinin açıldığını göreceksiniz.
 
