@@ -62,7 +62,6 @@ open -e ~/AppData/Roaming/Dizipal/.dizipalrc
 
 
 ### 2. Neler özelleştirilebilir?
-#### 2.1 İşte özelleştirebileceklerinizin bir listesi
 
 > [!NOTE]     
 > Versiyon 0.2.5 için sadece aşağıda gösterilen alanlar çalışmaktadır. Diğer seçenekler Bu sürüm itibariyle geliştirme aşamasındadır.
