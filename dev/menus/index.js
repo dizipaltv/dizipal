@@ -70,7 +70,7 @@ class MenuTemplate {
 }
 
 class Menus {
-    static settings = new MenuTemplate(650, 300, path.join(__dirname, "settings", "index.html"));
+    static settings = new MenuTemplate(650, 350, path.join(__dirname, "settings", "index.html"));
     static about = new MenuTemplate(350, 350, path.join(__dirname, "about", "index.html"));
     static get default() {
         return Menu.buildFromTemplate([

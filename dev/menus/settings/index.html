@@ -26,17 +26,21 @@
         <main>
             <table id="settings">
                 <tbody>
+                    <!-- Site Ayarları -->
                     <tr>
-                        <td><label for="currentSiteURL">Dizipal site bağlantısı</label></td>
+                        <td colspan="3"><h2>Site Ayarları</h2></td>
+                    </tr>
+                    <tr>
+                        <td><label for="currentSiteURL" title="Uygulamanın arayüzünde gösterilecek dizi/film izleme sitesi bağlantısı">Dizipal site bağlantısı</label></td>
                         <td>
                             <input class="inp" id="currentSiteURL" type="text">
                         </td>
                         <td>
-                            <button id="syncURL" class="btn" type="button">eşle</button>
+                            <button id="syncURL" class="btn" type="button" title="En güncel dizipal adresini sizin için bulur">eşle</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>Güncel adresi açılışta eşle</td>
+                        <td title="En güncel dizipal adresini sizin uygulama açılırken için bulur">Güncel adresi açılışta eşle</td>
                         <td colspan="2">
                             <label class="switch red">
                                 <input type="checkbox" id="checkAdressOnStartupSwitch">
@@ -45,7 +49,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Reklamları engelle</td>
+                        <td title="Sitede gösterilecek tüm reklamları engeller (Sadece Dizipal'e Özel)">Dizipal Reklamlarını engelle</td>
                         <td colspan="2">
                             <label class="switch red">
                                 <input type="checkbox" id="adBlockerSwitch">
@@ -53,15 +57,42 @@
                             </label>
                         </td>
                     </tr>
+
+
+                    <!-- Tercihler -->
                     <tr>
-                        <td><button class="btn btn-full closeWindow">iptal</button></td>
-                        <td colspan="2"><button type="button" class="btn btn-green btn-full" id="saveChanges">Değişiklikleri Kaydet</button></td>
+                        <td colspan="3"><h2>Tercihler (Beta)</h2></td>
+                    </tr>
+                    <tr>
+                        <td title="Uygulamanın kullanıcağı varsayılan temayı belirleyiniz"><label for="changeTheme">Varsayılan Tema (Beta)</label></td>
+                        <td>
+                            <select name="changeTheme" id="changeTheme" class="inp" disabled>
+                                <option value="dizipal">Dizipal</option>
+                                <option value="system">Sistem</option>
+                                <option value="dark">Karanlık</option>
+                                <option value="light">Aydınlık</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-disabled" title="Uygulama renklerini kendinize göre özelleştirebilirsiniz." disabled>özel</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td title="Uygulamanın ana dilini belirleyiniz (Site dahil değildir!)"><label for="changeTheme">Varsayılan Dil (Beta)</label></td>
+                        <td colspan="2">
+                            <select name="changeLanguage" id="changeLanguage" class="inp" disabled>
+                                <option value="tr">Türkçe</option>
+                            </select>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="controlButtons">
+                <button type="button" class="btn btn-full btn-disabled closeWindow">iptal</button>
+                <button type="button" class="btn btn-full" id="saveChanges">Değişiklikleri Kaydet</button>
+            </div>
         </main>
     </fieldset>
-
     <script src="./renderer.js"></script>
 </body>
 

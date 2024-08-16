@@ -9,14 +9,14 @@ const ICON_FOLDER = path.join(__dirname, "src", "images", "icons");
 module.exports = {
   packagerConfig: {
     asar: true,
-    name: "dizipal",
-    appBundleId: "com.ahmetcanisik.dizipal",
-    executableName: "dizipal",
+    name: INFO.name,
+    appBundleId: `com.${INFO.author.name}.${INFO.name}`,
+    executableName: INFO.name,
     icon: path.join(ICON_FOLDER, "icon"),
     win32metadata: {
-      CompanyName: 'Dizipal',
-      ProductName: 'Dizipal',
-      FileDescription: 'Dizipal application that can work in the desktop environment.'
+      CompanyName: INFO.productName,
+      ProductName: INFO.productName,
+      FileDescription: INFO.description
     },
     ignore: [
       /^scripts/,
@@ -28,7 +28,7 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        name: "Dizipal",
+        name: INFO.productName,
         setupExe: `${INFO.name}_${INFO.version}_win64.exe`,
         setupIcon: path.join(ICON_FOLDER, 'icon.ico'),
         iconUrl: path.join(ICON_FOLDER, 'icon.ico')
@@ -36,33 +36,44 @@ module.exports = {
     },
     {
       name: "@electron-forge/maker-zip",
-      platforms: ['darwin']
+      platforms: ['darwin'],
+    },
+    {
+      name: "@electron-forge/maker-dmg",
+      platforms: ['darwin'],
+      config: {
+        title: `${INFO.productName} Installer`,
+        icon: path.join(ICON_FOLDER, 'icon.icns'),
+        background: path.join(ICON_FOLDER, 'background.png'),
+        format: 'ULFO',
+        overwrite: true
+      },
     },
     {
       name: '@electron-forge/maker-deb',
-      platform: ["linux"],
+      platforms: ["linux"],
       config: {
         bin: INFO.ProductName,
         maintainer: INFO.author.name,
         homepage: INFO.author.url,
         categories: ['Video', 'Movie', 'Series'],
-        description: 'Dizipal application that can work in the desktop environment.',
+        description: INFO.description,
         icon: path.join(ICON_FOLDER, 'icon.png')
       },
     },
     {
       name: '@electron-forge/maker-rpm',
-      platform: ["linux"],
+      platforms: ["linux"],
       config: {
         bin: INFO.ProductName,
         maintainer: INFO.author.name,
         homepage: INFO.author.url,
         categories: ['Video', 'Movie', 'Series'],
-        description: 'Dizipal application that can work in the desktop environment.',
+        description: INFO.description,
         icon: path.join(ICON_FOLDER, 'icon.png')
       },
     }
-  ],
+  ],  
   plugins: [
     {
       name: '@electron-forge/plugin-auto-unpack-natives',
