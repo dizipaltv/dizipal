@@ -9,7 +9,7 @@ Merhabalar ücretsiz film izlemeyi sevenler topluluğu. Sizler için Dizipal'in 
 
 > [!IMPORTANT]      
 > Sorumluluk tamamen kullanan kullanıcıya aittir. Herhangi bir mesuliyet kabul etmiyorum.     
-> Şu anda sadece Linux ve Windows için yüklenebilir.     
+> Uygulamanın Macos, Linux ve Windows için [v0.2.5](https://github.com/dizipaltv/dizipal/releases/v0.2.5) ten itibaren yüklenebilir kurulum dosyaları mevcuttur.     
 
 
 <br /><br />
@@ -53,6 +53,13 @@ terminalinizi açınız ve ardından kendi editorünüz ile `~/AppData/Roaming/D
 xed ~/AppData/Roaming/Dizipal/.dizipalrc
 ```
 
+#### 1.3 Macos ta özelleştirme dosyasını açmak
+terminalinizi açınız ve ardından kendi editorünüz ile `~/AppData/Roaming/Dizipal/.dizipalrc` dosyasını açınız.
+**Macos 11 Bigsur** kullanan ben için işte bir örnek;
+```
+open -e ~/AppData/Roaming/Dizipal/.dizipalrc
+```
+
 
 ### 2. Neler özelleştirilebilir?
 #### 2.1 İşte özelleştirebileceklerinizin bir listesi
@@ -61,11 +68,22 @@ xed ~/AppData/Roaming/Dizipal/.dizipalrc
 > Versiyon 0.1.0 için sadece aşağıda gösterilen alanlar çalışmaktadır. Diğer seçenekler Bu sürüm itibariyle geliştirme aşamasındadır.
 
 ##### 2.1.1 - Güncel Dizipal Adresini El ile değiştirebilirsiniz. Herhangi bir websitesi adresi girdiğinizde ve uygulamayı tekrar başlattığınızda o websitesinin açıldığını göreceksiniz.
+
+| Özelleştirme Adı      | Aldığı Parametreler                                          |
+|-----------------------|--------------------------------------------------------------|
+| currentSiteURL        | Herhangi bir site bağlantısı (örn: https://ahmetcanisik.com) |
+| adBlocker             | `true` ya da `false`                                         |
+| checkAdressOnStartup  | `true` ya da `false`                                         |
+
+
+<br />
+
+işte `.dizipalrc` dosyası kullanım örneği:
 ```json
 {
-  //...
   "currentSiteURL": "https://dizipal738.com",
-  //...
+  "adBlocker": true,
+  "checkAdressOnStartup": false
 }
 ```
 
@@ -131,13 +149,14 @@ yarn start
 
 #### Daha fazla komuta nasıl ulaşabilirim?
 Evet daha birkaç komut daha mevcut bunları [package.json](package.json) içerisinde `"scripts"` altında bulabilirsiniz.
-işte versiyon 0.1.0 için kullanılan komutlar
+işte versiyon 0.2.5 için kullanılan komutlar
 ```
-start     : "electron-forge start",
-package   : "electron-forge package",
+minify    : "node scripts/minify.js"
+start     : "yarn minify && electron-forge start",
+package   : "yarn minify && electron-forge package",
 make      : "electron-forge make",
-publish   : "electron-forge publish",
-lint      : "echo \"No linting configured\""
+build     : "yarn package && yarn make",
+dev       : "electron dev/index.js",
 ```
 
 <br /><br />

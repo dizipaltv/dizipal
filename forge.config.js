@@ -44,7 +44,6 @@ module.exports = {
       config: {
         title: `${INFO.productName} Installer`,
         icon: path.join(ICON_FOLDER, 'icon.icns'),
-        background: path.join(ICON_FOLDER, 'background.png'),
         format: 'ULFO',
         overwrite: true
       },
