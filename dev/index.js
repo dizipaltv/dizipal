@@ -1,6 +1,7 @@
 const { BrowserWindow, app, ipcMain, nativeTheme } = require('electron');
 const { Alert, Api, Config } = require("./components");
 const { LoadingScreen, MainScreen } = require("./screens");
+const { Menus } = require('./menus');
 const path = require('path');
 
 let LOADING_ISDONE = false;
@@ -58,6 +59,16 @@ ipcMain.handle('get-package-version', () => {
   return app.getVersion;
 });
 
+ipcMain.handle('versions', () => {
+  return {
+    dizipal: app.getVersion(),
+    sistem: process.platform,
+    node: process.versions.node,
+    chrome: process.versions.chrome,
+    electron: process.versions.electron
+  }
+});
+
 ipcMain.handle('get-dizipal', () => {
   return Config.getInformation;
 });
@@ -81,4 +92,13 @@ ipcMain.on('notification', (event, options) => {
 ipcMain.on('restart-app', () => {
   app.relaunch();
   app.exit(0);
+});
+
+ipcMain.on('close-menu', (event, menu) => {
+  const closeMenu = Menus.close();
+  if (closeMenu.hasOwnProperty(menu)) {
+    closeMenu[menu]();
+  } else {
+    console.error(`Menü "${menu}" bulunamadı.`);
+  }
 });

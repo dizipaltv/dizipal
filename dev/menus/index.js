@@ -2,10 +2,76 @@ const { BrowserWindow, shell, Menu } = require("electron");
 const { App, Config } = require("../components");
 const path = require("path");
 
-class Menus {
-    static #aboutWindow = null;
-    static #settingsWindow = null;
+class MenuTemplate {
+    #window = null;
+    #paths = {
+        preload: path.join(__dirname, "..", "preload.js"),
+        icon: path.join(__dirname, "..", "images", "icons", "icon.png")
+    }
+    constructor(width = 200, height = 200, file_path) {
+        this.WIDTH = width;
+        this.HEIGHT = height;
+        this.FILE_PATH = file_path;
+    }
 
+    process() {
+        if (this.#window) {
+            this.#window.focus();
+            return;
+        }
+    
+        this.#window = new BrowserWindow({
+            width: this.WIDTH,
+            height: this.HEIGHT,
+            icon: this.#paths.icon,
+            frame: false,
+            modal: true,
+            resizable: false,
+            maximizable: false,
+            minimizable: false,
+            parent: BrowserWindow.getFocusedWindow() || undefined,
+            show: false,
+            webPreferences: {
+                preload: this.#paths.preload
+            }
+        });
+    
+        this.#window.loadFile(this.FILE_PATH);
+    
+        this.#window.webContents.setWindowOpenHandler(({ url }) => {
+            if (url.startsWith('https:')) {
+                shell.openExternal(url);
+            }
+            return { action: 'deny' };
+        });
+    
+        this.#window.setMenu(null);
+    
+        this.#window.on('ready-to-show', () => {
+            this.#window.show();
+        });
+        
+        this.#window.on('closed', () => {
+            this.#window = null;
+        });        
+    }
+
+    close() {
+        if (this.#window) {
+            this.#window.close();
+        }
+    }
+
+    destroy() {
+        if (this.#window) {
+            this.#window.destroy();
+        }
+    }
+}
+
+class Menus {
+    static settings = new MenuTemplate(650, 300, path.join(__dirname, "settings", "index.html"));
+    static about = new MenuTemplate(350, 350, path.join(__dirname, "about", "index.html"));
     static get default() {
         return Menu.buildFromTemplate([
             {
@@ -14,13 +80,13 @@ class Menus {
                     {
                         label: "Ayarlar",
                         click() {
-                            Menus.SettingsWindow();
+                            Menus.settings.process();
                         }
                     },
                     {
                         label: 'Hakkında',
                         click() {
-                            Menus.AboutWindow();
+                            Menus.about.process();
                         }
                     },
                     {
@@ -65,7 +131,7 @@ class Menus {
         ]);
     }
 
-    static get developMenus() {
+    static get development() {
         return Menu.buildFromTemplate([
             {
                 label: "Görünüm",
@@ -78,104 +144,14 @@ class Menus {
         ]);
     }
 
-    static AboutWindow() {
-        if (Menus.#aboutWindow) {
-            Menus.#aboutWindow.focus();
-            return;
-        }
-
-        Menus.#aboutWindow = new BrowserWindow({
-            width: 400,
-            height: 400,
-            icon: path.join(__dirname, "..", "images", "icons", "icon.png"),
-            modal: true,
-            show: false,
-            backgroundColor: '#ef4444',
-            parent: BrowserWindow.getFocusedWindow(),
-            resizable: false,
-            minimizable: false,
-            maximizable: false,
-            webPreferences: {
-                preload: path.join(__dirname, "about", "preload.js")
-            }
-        });
-
-        Menus.#aboutWindow.loadFile(path.join(__dirname, "about", "index.html"));
-
-        Menus.#aboutWindow.webContents.setWindowOpenHandler(({ url }) => {
-            if (url.startsWith('https:')) {
-                shell.openExternal(url);
-            }
-            return { action: 'deny' };
-        });
-
-        Menus.#aboutWindow.on('ready-to-show', () => {
-            Menus.#aboutWindow.show();
-        });
-
-        Menus.#aboutWindow.setMenu(null);
-
-        Menus.#aboutWindow.on('closed', () => {
-            Menus.#aboutWindow = null;
-        });
-    }
-
-    static SettingsWindow() {
-        if (Menus.#settingsWindow) {
-            Menus.#settingsWindow.focus();
-            return;
-        }
-
-        Menus.#settingsWindow = new BrowserWindow({
-            width: 650,
-            height: 420,
-            icon: path.join(__dirname, "..", "images", "icons", "icon.png"),
-            modal: true,
-            backgroundColor: '#ef4444',
-            parent: BrowserWindow.getFocusedWindow(),
-            resizable: false,
-            minimizable: false,
-            maximizable: false,
-            show: false,
-            webPreferences: {
-                preload: path.join(__dirname, "..", "preload.js")
-            }
-        });
-
-        Menus.#settingsWindow.loadFile(path.join(__dirname, "settings", "index.html"));
-
-        Menus.#settingsWindow.webContents.setWindowOpenHandler(({ url }) => {
-            if (url.startsWith('https:')) {
-                shell.openExternal(url);
-            }
-            return { action: 'deny' };
-        });
-
-        Menus.#settingsWindow.setMenu(null);
-
-        Menus.#settingsWindow.on('ready-to-show', () => {
-            Menus.#settingsWindow.show();
-        });
-
-        Menus.#settingsWindow.on('closed', () => {
-            Menus.#settingsWindow = null;
-        });
-    }
-
-    static close(window) {
-        if (window === "about") {
-            if (Menus.#aboutWindow) {
-                Menus.#aboutWindow.close();
-            }
-        }
-        if (window === "settings") {
-            if (Menus.#settingsWindow) {
-                Menus.#settingsWindow.close();
-            }
+    static close() {
+        return {
+            "settings": () => Menus.settings.destroy(),
+            "about": () => Menus.about.destroy()
         }
     }
 }
 
 module.exports = {
-    Menus,
+    Menus
 }

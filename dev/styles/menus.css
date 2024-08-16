@@ -5,8 +5,8 @@
 }
 body {
     margin: 0;
+    padding: 0;
     width: 100%;
-    padding: 0 10px;
     min-height: 100vh;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     display: grid;
@@ -86,6 +86,58 @@ td {
 .inp:active {
     border-bottom-color: transparent;
 }
+fieldset {
+    padding: 0 10px;
+    border: none;
+}
+body > header {
+    -webkit-app-region: drag;
+    background-color: var(--slate-900);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Header genişliğini tam ekran yapmak için */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Dikeyde ortala (isteğe bağlı) */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+body > header > nav {
+    -webkit-app-region: no-drag;
+    user-select: auto;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+}
+button {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+.closeWindow {
+    background-color: transparent;
+    color: var(--slate-300);
+    font-weight: lighter;
+    font-size: large;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.closeWindow:hover {
+    background-color: var(--red-700);
+    color: var(--slate-100);
+}
+
+.closeWindow:active {
+    opacity: 70%;
+}
+.title {
+    padding-left: 20px;
+    font-weight: 400;
+    color: var(--rose-100);
+}
 .btn {
     padding: 10px 20px;
     border-radius: 4px;
@@ -96,7 +148,7 @@ td {
     -moz-user-select: none;
     -webkit-user-select: none;
     cursor: pointer;
-    color: var(--slate-50);
+    color: var(--red-50);
     border-bottom: 4px solid var(--red-800);
     outline: 1px solid var(--red-600);
 }
@@ -107,11 +159,17 @@ td {
 .btn:active {
     border-bottom-color: transparent;
 }
+.btn-green  {
+    background-color: transparent;
+    color: var(--green-600);
+    border-bottom-color: var(--green-800);
+    outline-color: var(--green-600);
+}
+.btn-green:hover {
+    background-color: var(--green-600);
+    color: var(--green-50);
+}
 .btn-full {
     width: 100%;
     display: block;
-}
-fieldset {
-    border-radius: 4px;
-    border-color: var(--slate-700);
 }

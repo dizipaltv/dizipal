@@ -38,8 +38,8 @@ class AdBlocker {
                     }
                 })();
             `)
-                .then(result => console.log("[dom-ready] - [Script executed] Processed all images", result))
-                .catch(error => console.error("[dom-ready] - [Error executing script] Something went wrong!", error));
+                .then(result => console.log("✓ dom-ready \t\t\t—▶ [Script executed] Processed all images", result))
+                .catch(error => console.error("✓ dom-ready \t\t\t—▶ [Error executing script] Something went wrong!", error));
         });
 
         // Block videos once page has fully loaded
@@ -80,8 +80,8 @@ class AdBlocker {
                     }
                 })();
             `)
-                .then(result => console.log("[did-finish-load] - [Script executed] Removed all ad videos", result))
-                .catch(error => console.error("[did-finish-load] - [Error executing script] Something went wrong!", error));
+                .then(result => console.log("✓ did-finish-load \t\t\t—▶ [Script executed] Removed all ad videos", result))
+                .catch(error => console.error("✓ did-finish-load \t\t\t—▶ [Error executing script] Something went wrong!", error));
         });
     }
 }

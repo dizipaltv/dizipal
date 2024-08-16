@@ -1,5 +1,18 @@
 window.addEventListener('DOMContentLoaded', async () => {
     try {
+        const closeButtons = document.querySelectorAll('.closeWindow');
+        closeButtons.forEach(closeButton => {
+            if (closeButton) {
+                closeButton.addEventListener('click', async () => {
+                    try {
+                        await window.electronAPI.closeMenu('settings');
+                    } catch (error) {
+                        console.error("Menu kapatılırken hata oluştu:", error);
+                    }
+                });
+            }
+        });
+
         const ckAdressSwitch = document.getElementById('checkAdressOnStartupSwitch');
         const adBlockerSwitch = document.getElementById('adBlockerSwitch');
         let information = await window.electronAPI.getDizipal();

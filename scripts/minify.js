@@ -2,12 +2,46 @@ const fs = require('fs-extra');
 const path = require('path');
 const Terser = require('terser');
 const { minify: minifyHTML } = require('html-minifier-terser');
-const CleanCSS = require('clean-css'); // clean-css'i içe aktarın
+const CleanCSS = require('clean-css');
 
-const srcDir = path.join(__dirname, "..", "dev");
-const buildDir = path.join(__dirname, "..", "src");
+const srcDir = path.join(__dirname, "..", "dev"); // Kaynak dizin
+const buildDir = path.join(__dirname, "..", "src"); // Hedef dizin
 
 fs.ensureDirSync(buildDir);
+
+class Terminal {
+    static processed = 0;
+    static lsep = null;
+
+    static seperator(length) {
+        let sep = "";
+        for (let i = 0; i < length;i++) {
+            sep += "—";
+        }
+        return sep;
+    }
+
+    static get latestSep() {
+        return Terminal.lsep;
+    }
+
+    static line(filePath, buildPath, message = "Minified") {
+        console.clear();
+        const prefix = `✓ ${message} ${filePath} —▶ ${buildPath}`;
+        if (message === "Minified") {
+            Terminal.processed += 1;
+        }
+        const seperator = Terminal.seperator(prefix.length);
+        Terminal.lsep = seperator;
+        console.log(`\n${seperator}\n Minify.js\n`);
+        console.log(`${prefix}\n`);
+    }
+
+    static get end() {
+        console.log(`‽ ${Terminal.processed} files were minified!\n ${Terminal.latestSep}`);
+    }
+}
+
 
 async function minifyJS(filePath) {
     try {
@@ -20,7 +54,7 @@ async function minifyJS(filePath) {
         const buildPath = path.join(buildDir, path.relative(srcDir, filePath));
         await fs.ensureDir(path.dirname(buildPath));
         await fs.writeFile(buildPath, result.code, 'utf8');
-        console.log(`Minified ${filePath} -> ${buildPath}`);
+        Terminal.line(filePath, buildPath);
     } catch (error) {
         console.error(`Error processing file ${filePath}:`, error);
     }
@@ -38,7 +72,7 @@ async function minifyHTMLFile(filePath) {
         const buildPath = path.join(buildDir, path.relative(srcDir, filePath));
         await fs.ensureDir(path.dirname(buildPath));
         await fs.writeFile(buildPath, result, 'utf8');
-        console.log(`Minified ${filePath} -> ${buildPath}`);
+        Terminal.line(filePath, buildPath);
     } catch (error) {
         console.error(`Error processing file ${filePath}:`, error);
     }
@@ -55,7 +89,7 @@ async function minifyCSS(filePath) {
         const buildPath = path.join(buildDir, path.relative(srcDir, filePath));
         await fs.ensureDir(path.dirname(buildPath));
         await fs.writeFile(buildPath, output.styles, 'utf8');
-        console.log(`Minified ${filePath} -> ${buildPath}`);
+        Terminal.line(filePath, buildPath);
     } catch (error) {
         console.error(`Error processing file ${filePath}:`, error);
     }
@@ -66,7 +100,7 @@ async function copyImages() {
         const imagesDir = path.join(srcDir, 'images');
         const buildImagesDir = path.join(buildDir, 'images');
         await fs.copy(imagesDir, buildImagesDir);
-        console.log(`Copied images from ${imagesDir} to ${buildImagesDir}`);
+        Terminal.line(imagesDir, buildImagesDir, "Moved");
     } catch (error) {
         console.error(`Error copying images:`, error);
     }
@@ -84,7 +118,7 @@ async function processDir(dir) {
                 await minifyJS(filePath);
             } else if (path.extname(file) === '.html') {
                 await minifyHTMLFile(filePath);
-            } else if (path.extname(file) === '.css') { // CSS dosyalarını da işle
+            } else if (path.extname(file) === '.css') {
                 await minifyCSS(filePath);
             }
         }));
@@ -93,10 +127,9 @@ async function processDir(dir) {
     }
 }
 
-(async() => {
+(async () => {
     // İlk olarak resimleri kopyala
     await copyImages();
-})()
-
-// Ardından diğer dosyaları işle
-processDir(srcDir);
+    // Ardından diğer dosyaları işle
+    await processDir(srcDir);
+})().then(() => Terminal.end);

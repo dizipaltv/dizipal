@@ -41,3 +41,6 @@ body {
     right: auto;
     top: auto;
 }
+.title {
+    font-weight: bold;
+}

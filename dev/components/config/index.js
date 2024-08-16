@@ -15,7 +15,7 @@ class Config {
         try {
             // if config folder not exist 
             SyncFile.make_dir(Config.CONFIG_FOLDER);
-            console.log(`ℹ️ [--config.Config.check--] - The ${Config.CONFIG_FOLDER} folder has been created again.`);
+            console.log(`‽ Config.check \t\t\t\t—▶ The ${Config.CONFIG_FOLDER} folder has been created again.`);
 
             // if not exist config file
             if (!SyncFile.file_there(Config.CONFIG_FILE)) {
@@ -40,16 +40,16 @@ class Config {
             }
 
 
-            console.log(`✅ [--config.Config.check--] - All checked passed!`);
+            console.log(`✓ Config.check \t\t\t\t—▶ All checked passed!`);
         } catch (err) {
-            console.error(`❌ [--config.Config.check--] - An error occurred: ${err.message}`);
+            console.error(`✕ Config.check \t\t\t\t—▶ An error occurred: ${err.message}`);
         } 
     }
 
     static setInformation(json) {
         Config.check();
         SyncFile.update_json(Config.CONFIG_FILE, json);
-        console.log(`✅ [--config.Config.setInformation--] - successfully setted informations!`);
+        console.log(`✓ config.Config.setInformation \t\t\t—▶ successfully setted informations!`);
     }
 
     static get getPackageInfo() {
@@ -58,7 +58,7 @@ class Config {
 
     static get getInformation() {
         Config.check();
-        console.log(`✅ [--config.Config.getInformation--] - Getting informations!`);
+        console.log(`✓ Config.getInformation \t\t—▶ Getting informations!`);
         return SyncFile.read_json(Config.CONFIG_FILE);
     }
 

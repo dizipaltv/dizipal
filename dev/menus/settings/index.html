@@ -14,12 +14,15 @@
 </head>
 
 <body>
+    <header>
+        <div class="title">
+            Ayarlar
+        </div>
+        <nav>
+            <button class="closeWindow">✕</button>
+        </nav>
+    </header>
     <fieldset>
-        <legend>
-            <header class=list-title>
-                <h1>Ayarlar</h1>
-            </header>
-        </legend>
         <main>
             <table id="settings">
                 <tbody>
@@ -51,8 +54,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3"><button type="button" class="btn btn-full" id="saveChanges">Değişiklikleri
-                                Kaydet</button></td>
+                        <td><button class="btn btn-full closeWindow">iptal</button></td>
+                        <td colspan="2"><button type="button" class="btn btn-green btn-full" id="saveChanges">Değişiklikleri Kaydet</button></td>
                     </tr>
                 </tbody>
             </table>

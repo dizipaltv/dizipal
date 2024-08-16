@@ -9,9 +9,9 @@ class Alert {
             };
 
             new Notification(notificationProps).show();
-            console.log("✅ [--alert.Alert.show_notification--] - New Notification has been created successfully!");
+            console.log("✓ Alert.show_notification \t\t\t—▶ New Notification has been created successfully!");
         } catch (err) {
-            console.error("❌ [--alert.Alert.show_notification--] - Ups! Something went wrong!\n", err);
+            console.error("✕ Alert.show_notification \t\t\t—▶ Ups! Something went wrong!\n", err);
         }
     }
 }

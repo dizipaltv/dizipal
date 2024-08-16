@@ -10,6 +10,7 @@ module.exports = {
   packagerConfig: {
     asar: true,
     name: "dizipal",
+    appBundleId: "com.ahmetcanisik.dizipal",
     executableName: "dizipal",
     icon: path.join(ICON_FOLDER, "icon"),
     win32metadata: {
@@ -32,6 +33,10 @@ module.exports = {
         setupIcon: path.join(ICON_FOLDER, 'icon.ico'),
         iconUrl: path.join(ICON_FOLDER, 'icon.ico')
       },
+    },
+    {
+      name: "@electron-forge/maker-zip",
+      platforms: ['darwin']
     },
     {
       name: '@electron-forge/maker-deb',
