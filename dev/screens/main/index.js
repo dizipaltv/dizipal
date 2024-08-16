@@ -12,22 +12,20 @@ class MainScreen {
             height: 768,
             show: false,
             webPreferences: {
-                icon: path.join(__dirname, "..", "..", "preload.js")
+                icon: path.join(__dirname, "..", "..", "images", "icons", "icon.png"),
+                preload: path.join(__dirname, "..", "..", "preload.js")
             }
         });
 
         Menu.setApplicationMenu(Menus.default);
 
-        if (Config.getInformation.adBlocker) {
-          AdBlocker.blockURLs(session);
-          AdBlocker.blockAds(MainScreen.window);
-        }
+        MainScreen.reload(url);
 
-        MainScreen.window.loadURL(url);
+        MainScreen.window.webContents.executeJavaScript(`window.addEventListener('offline', async () => {console.log('Bağlantı kesildi.');await window.electronAPI.connection(false);});`);
 
         MainScreen.window.webContents.setWindowOpenHandler(({ url }) => {
             if (url.startsWith('http')) {
-              MainScreen.window.loadURL(url);
+              MainScreen.reload(url);
               return { action: 'deny' };
             }
             return { action: 'deny' };
@@ -36,15 +34,15 @@ class MainScreen {
           MainScreen.window.on("enter-full-screen", () => {
             Menu.setApplicationMenu(null);
           });
-        
+
           MainScreen.window.on("leave-full-screen", () => {
             Menu.setApplicationMenu(Menus.default);
           });
-        
+
           MainScreen.window.on("maximize", () => {
             Menu.setApplicationMenu(Menus.default);
           });
-        
+
           MainScreen.window.on("unmaximize", () => {
             Menu.setApplicationMenu(Menus.default);
           });
@@ -61,6 +59,14 @@ class MainScreen {
             MainScreen.window.destroy();
             MainScreen.window = null;
         }
+     }
+
+     static reload(url = Config.getInformation.currentSiteURL, blockAds = Config.getInformation.adBlocker) {
+         if (blockAds) {
+             AdBlocker.blockURLs(session);
+             AdBlocker.blockAds(MainScreen.window);
+         }
+        MainScreen.window.loadURL(url);
      }
 }
 

@@ -38,14 +38,23 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         const saveButton = document.getElementById('saveChanges');
         saveButton.addEventListener('click', async () => {
-            information.currentSiteURL = currentSiteURL.value;
+            let reload = false;
+            const loadedURL = await window.electronAPI.getLoadedURL();
+            if (currentSiteURL.value !== loadedURL) {
+                information.currentSiteURL = currentSiteURL.value;
+                reload = true;
+            }
+
             information.checkAdressOnStartup = ckAdressSwitch.checked ? true : false;
             information.adBlocker = adBlockerSwitch.checked ? true : false;
             await window.electronAPI.setDizipal(information);
             await window.electronAPI.notification({
-                body: "Değişiklikler Kaydedildi! Değişikliklerin uygulanması için uygulama yeniden başlatılıyor..."
+                body: "Değişiklikler Başarıyla Kaydedildi!"
             });
-            await window.electronAPI.reOpenApp();
+
+            if (reload) {
+                await window.electronAPI.reloadURL(information.currentSiteURL, information.adBlocker);
+            }
         });
     } catch (error) {
         console.error('Veri alma hatası:', error);

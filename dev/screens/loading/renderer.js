@@ -1,3 +1,6 @@
+window.addEventListener('offline', async () => {
+    await window.electronAPI.connection(false);
+});
 window.addEventListener('DOMContentLoaded', async () => {
     const status = document.getElementById('status');
     const loadText = status.innerText;
