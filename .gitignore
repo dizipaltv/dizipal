@@ -12,3 +12,6 @@ jspm_packages/
 
 # Electron Builder
 releases/
+
+# Dizipal
+src/
