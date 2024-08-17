@@ -33,10 +33,6 @@ function setLoadingIsDone(isDone) {
   }
 }
 
-if (require('electron-squirrel-startup')) {
-  app.quit();
-}
-
 app.on('ready', () => {
   nativeTheme.themeSource = "dark";
   LoadingScreen.show();

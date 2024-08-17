@@ -5,32 +5,14 @@
   "description": "Dizipal application that can work in the desktop environment.",
   "main": "src/index.js",
   "scripts": {
+    "dev": "electron dev/index.js",
     "minify": "node scripts/minify.js",
-    "start": "yarn minify && electron-forge start",
-    "package": "yarn minify && electron-forge package",
-    "make": "electron-forge make",
-    "build": "yarn package && yarn make",
-    "dev": "electron dev/index.js"
+    "start": "yarn minify && electron .",
+    "build": "yarn minify && electron-builder --config electron-builder.yml",
+    "build-linux": "yarn minify && electron-builder --config electron-builder.yml --linux",
+    "build-mac": "yarn minify && electron-builder --config electron-builder.yml --mac",
+    "build-win": "yarn minify && electron-builder --config electron-builder.yml --win"
   },
-  "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.3",
-    "@electron-forge/cli": "^7.4.0",
-    "@electron-forge/maker-deb": "^7.4.0",
-    "@electron-forge/maker-dmg": "^7.4.0",
-    "@electron-forge/maker-rpm": "^7.4.0",
-    "@electron-forge/maker-squirrel": "^7.4.0",
-    "@electron-forge/maker-zip": "^7.4.0",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
-    "@electron-forge/plugin-fuses": "^7.4.0",
-    "@electron/fuses": "^1.8.0",
-    "clean-css": "^5.3.3",
-    "electron": "31.3.1",
-    "fs-extra": "^11.2.0",
-    "html-minifier-terser": "^7.2.0",
-    "terser": "^5.31.6"
-  },
-  "keywords": [],
   "author": {
     "name": "ahmetcanisik",
     "email": "can.isik.business@gmail.com",
@@ -42,7 +24,12 @@
   },
   "license": "MIT",
   "packageManager": "yarn@4.4.0",
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "electron": "^31.4.0",
+    "electron-builder": "^24.13.3",
+    "fs-extra": "^11.2.0",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.31.6"
   }
 }
