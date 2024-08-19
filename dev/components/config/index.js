@@ -10,7 +10,7 @@ class Config {
         "checkAdressOnStartup": true,
         "twitter": "https://x.com/5dizipal5"
     }
-    static CONFIG_FOLDER = os.platform() === "win32" ? path.join(os.homedir(), 'AppData', 'Roaming', 'Dizipal') : "~";
+    static CONFIG_FOLDER = os.platform() === "win32" ? path.join(os.homedir(), 'AppData', 'Roaming', 'Dizipal') : os.homedir();
     static CONFIG_FILE = path.join(Config.CONFIG_FOLDER, ".dizipalrc");
     static async check() {
         try {
