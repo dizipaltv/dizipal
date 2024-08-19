@@ -8,7 +8,7 @@ class LoadingScreen {
         LoadingScreen.window = new BrowserWindow({
             width: 600,
             height: 300,
-            frame: false,
+            titleBarStyle: 'hidden',
             show: false,
             webPreferences: {
                 preload: path.join(__dirname, "..", "..", "preload.js")

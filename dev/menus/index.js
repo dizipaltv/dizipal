@@ -24,7 +24,7 @@ class MenuTemplate {
             width: this.WIDTH,
             height: this.HEIGHT,
             icon: this.#paths.icon,
-            frame: false,
+            titleBarStyle: 'hidden',
             modal: true,
             resizable: false,
             maximizable: false,

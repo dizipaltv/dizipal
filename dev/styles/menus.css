@@ -1,19 +1,13 @@
-/* width */
+/* scrollbars */
 ::-webkit-scrollbar {
     width: 4px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
     background: var(--slate-900);
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--slate-600);
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: var(--slate-500);
 }
@@ -23,6 +17,7 @@
     left: 0;
     box-sizing: border-box;
 }
+/* end scrollbars ———————————— */
 
 body {
     margin: 0;

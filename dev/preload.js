@@ -1,6 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
+  getTwitterAdress: () => ipcRenderer.invoke("get-twitter-adress"),
   getDizipal: () => ipcRenderer.invoke('get-dizipal'),
   getApiURL: () => ipcRenderer.invoke('get-api-url'),
   getPackageInfo: () => ipcRenderer.invoke("get-package-info"),

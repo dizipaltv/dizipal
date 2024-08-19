@@ -1,1 +1,0 @@
-const updateConnectionStatus=async()=>{const n=navigator.onLine;await window.electronAPI.connection(n)};window.addEventListener("DOMContentLoaded",(async()=>{document.getElementById("reloadBtn").addEventListener("click",updateConnectionStatus)})),window.addEventListener("online",updateConnectionStatus),window.addEventListener("offline",updateConnectionStatus);

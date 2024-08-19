@@ -28,11 +28,14 @@ window.addEventListener('DOMContentLoaded', async () => {
             syncURL.classList.add("loading");
             const csURL = await window.electronAPI.getApiURL();
             information.currentSiteURL = csURL;
-            await window.electronAPI.setDizipal(information);
             currentSiteURL.value = csURL;
             syncURL.classList.remove("loading");
-            await window.electronAPI.notification({
-                body: `Güncel adres ${currentSiteURL.value} ile başarıyla eşleşildi!`
+            Fvuar.new({
+              text: `Güncel adres <strong>${currentSiteURL.value}</strong> ile başarıyla eşleşildi!`,
+              position: "top-center",
+              theme: "success",
+              clickToClose: false,
+              displayTime: 2
             });
         });
 
@@ -48,10 +51,13 @@ window.addEventListener('DOMContentLoaded', async () => {
             information.checkAdressOnStartup = ckAdressSwitch.checked ? true : false;
             information.adBlocker = adBlockerSwitch.checked ? true : false;
             await window.electronAPI.setDizipal(information);
-            await window.electronAPI.notification({
-                body: "Değişiklikler Başarıyla Kaydedildi!"
+            Fvuar.new({
+              text: "Değişiklikler Başarıyla Kaydedildi!",
+              position: "top-center",
+              theme: "success",
+              clickToClose: false,
+              displayTime: 2
             });
-
             if (reload) {
                 await window.electronAPI.reloadURL(information.currentSiteURL, information.adBlocker);
             }

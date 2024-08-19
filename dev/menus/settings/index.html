@@ -8,6 +8,7 @@
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name=viewport>
     <title>Ayarlar - Dizipal</title>
     <meta content=ahmetcanisik name=author>
+    <link rel="stylesheet" href="../../styles/alert.css">
     <link rel="stylesheet" href="../../styles/mytheme.min.css">
     <link rel="stylesheet" href="../../styles/toggle.css">
     <link rel="stylesheet" href="../../styles/menus.css">
@@ -33,7 +34,7 @@
                     <tr>
                         <td><label for="currentSiteURL" title="Uygulamanın arayüzünde gösterilecek dizi/film izleme sitesi bağlantısı">Dizipal site bağlantısı</label></td>
                         <td>
-                            <input class="inp" id="currentSiteURL" type="text">
+                            <input class="inp" id="currentSiteURL" type="url">
                         </td>
                         <td>
                             <button id="syncURL" class="btn" type="button" title="En güncel dizipal adresini sizin için bulur">eşle</button>
@@ -93,6 +94,7 @@
             </div>
         </main>
     </fieldset>
+    <script src="../../scripts/gui/alert.js"></script>
     <script src="./renderer.js"></script>
 </body>
 

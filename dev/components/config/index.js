@@ -7,9 +7,10 @@ class Config {
     static BASIC_CONFIGS = {
         "currentSiteURL": "https://dizipal738.com",
         "adBlocker": true,
-        "checkAdressOnStartup": true
+        "checkAdressOnStartup": true,
+        "twitter": "https://x.com/5dizipal5"
     }
-    static CONFIG_FOLDER = path.join(os.homedir(), 'AppData', 'Roaming', 'Dizipal');
+    static CONFIG_FOLDER = os.platform() === "win32" ? path.join(os.homedir(), 'AppData', 'Roaming', 'Dizipal') : "~";
     static CONFIG_FILE = path.join(Config.CONFIG_FOLDER, ".dizipalrc");
     static async check() {
         try {
