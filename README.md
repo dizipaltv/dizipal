@@ -87,9 +87,9 @@ Kaynak kodlarıyla oynamak kendinize göre değiştirmeniz için birkaç bilgi s
 
 | Kullanılan                   | Adı      | Sürüm   |
 |------------------------------| -------- | ------- |
-| Programlama Dili             | Nodejs   | 20.16.0 |
+| Programlama Dili             | Nodejs   | 20.17.0 |
 | Masaüstü Uygulama Yaratıcısı | Electron | 32.0.1  |
-| Paket Yöneticisi             | Yarn     | 4.4.0   |
+| Paket Yöneticisi             | Yarn     | 1.22.22   |
 
 <br />
 
