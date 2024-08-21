@@ -73,7 +73,7 @@ class AdBlocker {
                                 }
                             });
                         } else {
-                            console.error("vast or vast_new element not found");
+                            console.error("No ads is here! vast or vast_new element not found");
                         }
                     } catch (error) {
                         console.error("Error while executing script for videos: ", error);

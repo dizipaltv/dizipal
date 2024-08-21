@@ -1,7 +1,7 @@
 window.addEventListener('offline', async () => {
     await window.electronAPI.connection(false);
 });
-window.addEventListener('DOMContentLoaded', async () => {
+const checkers = async () => {
     const status = document.getElementById('status');
     const loadText = status.innerText;
 
@@ -11,14 +11,23 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (information.checkAdressOnStartup) {
         status.innerText = "Güncel Adres Bilgisi Alınıyor...";
         const url = await window.electronAPI.getApiURL();
-        information.currentSiteURL = url;
-        await window.electronAPI.setDizipal(information);
-
-        await window.electronAPI.notification({
-            body: `Güncel Adres Güncellendi -> ${url}`
-        });
+        if (information.currentSiteURL !== url) {
+            information.currentSiteURL = url;
+            await window.electronAPI.setDizipal(information);
+            await window.electronAPI.notification({
+                body: `Güncel Adres Güncellendi -> ${url}`
+            });
+        }
     }
-    status.innerText = loadText;
 
-    await window.electronAPI.loadingIsDone(true);
+    status.innerText = loadText;
+}
+window.addEventListener('DOMContentLoaded', async () => {
+    await checkers()
+        .then(async () => {
+            await window.electronAPI.loadingIsDone(true);
+        })
+        .catch(err => {
+            console.error("Yükleme ekranında bir sorun meydana geldi!\n", err);
+        })
 });

@@ -61,32 +61,48 @@ footer,
 header {
     min-width: 100%;
     width: 100%;
+    padding: 20px 10px 0 10px;
+}
+
+header {
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    padding-top: 0;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+    opacity: 50%;
 }
 
 table {
     min-width: 100%;
     width: 100%;
-    border: 1px solid var(--slate-900);
+    /*border: 1px solid var(--slate-900);*/
 }
 
 tbody {
     min-width: 100%;
     width: 100%;
-    border: 1px solid var(--slate-900);
     color: var(--slate-300);
     font-size: large;
+    /*border: 1px solid var(--slate-900);*/
 }
 
 tr {
     min-width: 100%;
     width: 100%;
-    border: 1px solid var(--slate-900);
+    /*border: 1px solid var(--slate-900);*/
 }
 
 td {
     padding: 5px;
     width: 50%;
-    border: 1px solid var(--slate-900);
+    /*order: 1px solid var(--slate-900);*/
 }
 
 .loading {
@@ -120,7 +136,7 @@ td {
 }
 
 fieldset {
-    padding: 20px 10px 0 10px;
+    width: 100%;
     border: none;
 }
 
@@ -135,7 +151,6 @@ body>header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Dikeyde ortala (isteğe bağlı) */
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -200,7 +215,7 @@ button {
 }
 
 .btn:active {
-    border-bottom-color: transparent;
+    outline-width: 2px;
 }
 
 .btn-full {
@@ -209,6 +224,10 @@ button {
 }
 
 .controlButtons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: end;
+    align-items: center;
     position: sticky;
     top: auto;
     right: auto;

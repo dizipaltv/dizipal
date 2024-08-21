@@ -23,10 +23,9 @@
     "url": "git+https://github.com/dizipaltv/dizipal.git"
   },
   "license": "MIT",
-  "packageManager": "yarn@4.4.0",
   "devDependencies": {
     "clean-css": "^5.3.3",
-    "electron": "^31.4.0",
+    "electron": "^32.0.1",
     "electron-builder": "^24.13.3",
     "fs-extra": "^11.2.0",
     "html-minifier-terser": "^7.2.0",

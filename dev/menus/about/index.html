@@ -1,50 +1,49 @@
 <!doctype html>
 <html lang=en>
-    <head>
-        <meta content="script-src 'self' 'unsafe-inline'" http-equiv=Content-Security-Policy>
-        <meta charset=utf-8>
-        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name=viewport>
-        <title>Hakkında - Dizipal</title>
-        <meta content=ahmetcanisik name=author>
-        <link rel="stylesheet" href="../../styles/mytheme.min.css">
-        <link rel="stylesheet" href="../../styles/menus.css">
-    </head>
-    <body>
-        <header>
-            <div class="title">Hakkında</div>
-            <nav>
-                <button class="closeWindow">✕</button>
-            </nav>
-        </header>
-        <fieldset>
-            <main>
-                <table>
-                    <tbody id="version_infos"></tbody>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                <code>
-                                    <span id="copyright"></span><a class=link id="author_infos" href="https://ahmetcanisik.com" target=_blank>ahmetcanisik</a>
-                                </code>
-                            </td>
-                            <td>
-                                <code>
+
+<head>
+    <meta content="script-src 'self' 'unsafe-inline'" http-equiv=Content-Security-Policy>
+    <meta charset=utf-8>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name=viewport>
+    <title>Hakkında - Dizipal</title>
+    <meta content=ahmetcanisik name=author>
+    <link rel="stylesheet" href="../../styles/mytheme.min.css">
+    <link rel="stylesheet" href="../../styles/menus.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">Hakkında</div>
+        <nav>
+            <button class="closeWindow">✕</button>
+        </nav>
+    </header>
+    <fieldset>
+        <main>
+            <table>
+                <tbody id="version_infos"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <code>
                                     <a class="link" id="github_repository" href="https://github.com/dizipaltv/dizipal" target="_blank">Github</a>
                                 </code>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td colspan="2">
+                        </td>
+                        <td>
                             <code>
                                 <a id="twitterLink" class="link" href="https://x.com/5dizipal5" target="_blank">twitter</a>
                             </code>
                         </td>
                     </tr>
-                    </tfoot>
-                </table>
-            </main>
-        </fieldset>
+                </tfoot>
+            </table>
+        </main>
+    </fieldset>
+    <footer>
+        <code><span id="copyright">&copy;2024</span><a class=link id="author_infos" href="https://ahmetcanisik.com" target=_blank>ahmetcanisik</a></code>
+    </footer>
 
-        <script src="./renderer.js"></script>
-    </body>
+    <script src="./renderer.js"></script>
+</body>
+
 </html>

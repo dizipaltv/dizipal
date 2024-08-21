@@ -1,3 +1,8 @@
+window.addEventListener('offline', async () => {
+  await window.electronAPI.closeMenu('about');
+  await window.electronAPI.connection(false);
+});
+
 window.addEventListener('DOMContentLoaded', async () => {
   try {
     const versions = await window.electronAPI.versions();

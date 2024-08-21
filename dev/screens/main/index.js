@@ -1,5 +1,5 @@
 const {BrowserWindow, session} = require("electron");
-const {AdBlocker, Config, Paths, SyncFile} = require("../../components");
+const {AdBlocker, Config, Paths} = require("../../components");
 const {Menus} = require("../../menus");
 
 class MainScreen {
@@ -33,7 +33,7 @@ class MainScreen {
 
     MainScreen.window.webContents.setWindowOpenHandler(({url}) => {
       if (url.startsWith('http')) {
-        // Dış linkler için sadece engelleme yapılabilir, tekrar yüklemeye gerek yok
+        MainScreen.reload(url);
         return {action: 'deny'};
       }
       return {action: 'deny'};

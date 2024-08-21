@@ -1,5 +1,7 @@
-# Açık Kaynak Kodlu Dizipal Masaüstü Uygulaması
+# Dizipal Masaüstü Uygulaması
 [![Dizipal Downloads](https://img.shields.io/github/downloads/dizipaltv/dizipal/total.svg?style=flat&label=Toplam%20İndirme)](https://github.com/dizipaltv/dizipal/releases)
+
+Açık kaynak kodlu dizipal masaüstü uygulaması
 
 ![Dizipal Hakkinda](https://cdn.jsdelivr.net/gh/dizipaltv/assets/pictures/boydan-al-guzum.webp)
 ![Dizipal Hakkinda](https://cdn.jsdelivr.net/gh/dizipaltv/assets/pictures/arama-cibiki.webp)
@@ -8,8 +10,8 @@
 Merhabalar ücretsiz film izlemeyi sevenler topluluğu. Sizler için Dizipal'in masaüstü versiyonunu çıkardım. Amacım Bu uygulamayı güncel dizipal adresine göre güncel tutmak. Şu anda ilk sürümünü yayınladım ve projenin kaynak kodlarını da beraberinde yayınladım. Keyifli Seyretmeler.
 
 > [!IMPORTANT]      
-> Sorumluluk tamamen kullanan kullanıcıya aittir. Herhangi bir mesuliyet kabul etmiyorum.     
-> Uygulamanın Macos, Linux ve Windows için [v0.2.5](https://github.com/dizipaltv/dizipal/releases/v0.2.5) ten itibaren yüklenebilir kurulum dosyaları mevcuttur.     
+> Sorumluluk tamamen uygulamayı kullanan kullanıcıya aittir. Herhangi bir mesuliyet kabul etmiyorum.     
+> Macos, linux ve Windows için indirme kurulum dosyaları mevcuttur. 
 
 
 <br /><br />
@@ -20,6 +22,7 @@ Merhabalar ücretsiz film izlemeyi sevenler topluluğu. Sizler için Dizipal'in 
 - Dizipal'in güncel sitelerine her zaman erişebileceksiniz.
 - Dizipal'i özelleştirilmiş adblocker ile kullanacaksınız (Tamamen dizipal'e özel)
 - Herhangi bir internet taraması yapmak zorunda kalmadan, çoğu dizi ve filme Masaüstü uygulamasından ulaşabileceksiniz.
+- Dizipal'in en güncel twitter adresine her zaman `Menüler>Dizipal>Hakkında` kısmından ulaşabileceksiniz.
 
 <br /><br />
 
@@ -46,18 +49,10 @@ Evet ufak özelleştirme seçenekleri de bulunmaktadır. Özelleştirme yaomak i
 notepad C:/Users/can/AppData/Roaming/Dizipal/.dizipalrc
 ```
 
-#### 1.2 Linux ta özelleştirme dosyasını açmak
-terminalinizi açınız ve ardından kendi editorünüz ile `~/AppData/Roaming/Dizipal/.dizipalrc` dosyasını açınız.
-**Linux Mint 22 Wilma** kullanan ben için işte bir örnek;
+#### 1.2 Macos ve Linux ta özelleştirme dosyasını açmak
+terminalinizi açınız ve ardından kendi metin düzenleme editorünüz ile `~/.dizipalrc` dosyasını açınız. [nano](https://www.nano-editor.org/) ile bir örnek;
 ```
-xed ~/AppData/Roaming/Dizipal/.dizipalrc
-```
-
-#### 1.3 Macos ta özelleştirme dosyasını açmak
-terminalinizi açınız ve ardından kendi editorünüz ile `~/AppData/Roaming/Dizipal/.dizipalrc` dosyasını açınız.
-**Macos 11 Bigsur** kullanan ben için işte bir örnek;
-```
-open -e ~/AppData/Roaming/Dizipal/.dizipalrc
+nano ~/.dizipalrc
 ```
 
 
@@ -93,7 +88,7 @@ Kaynak kodlarıyla oynamak kendinize göre değiştirmeniz için birkaç bilgi s
 | Kullanılan                   | Adı      | Sürüm   |
 |------------------------------| -------- | ------- |
 | Programlama Dili             | Nodejs   | 20.16.0 |
-| Masaüstü Uygulama Yaratıcısı | Electron | 31.3.1  |
+| Masaüstü Uygulama Yaratıcısı | Electron | 32.0.1  |
 | Paket Yöneticisi             | Yarn     | 4.4.0   |
 
 <br />

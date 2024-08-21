@@ -1,5 +1,5 @@
 const { BrowserWindow, shell, Menu } = require("electron");
-const { App, Config } = require("../components");
+const { Config } = require("../components");
 const path = require("path");
 
 class MenuTemplate {
@@ -70,8 +70,9 @@ class MenuTemplate {
 }
 
 class Menus {
+    static isMac = process.platform === "darwin" ? true : false;
     static settings = new MenuTemplate(650, 350, path.join(__dirname, "settings", "index.html"));
-    static about = new MenuTemplate(350, 350, path.join(__dirname, "about", "index.html"));
+    static about = new MenuTemplate(300, 300, path.join(__dirname, "about", "index.html"));
     static get default() {
         return Menu.buildFromTemplate([
             {
@@ -95,14 +96,14 @@ class Menus {
                             shell.openExternal(Config.getInformation.currentSiteURL);
                         }
                     },
-                    {
+                    /*{
                         label: 'Uygulamayı Yeniden Başlat',
                         click() {
                             App.relaunch();
                         }
-                    },
+                    },*/
                     { 
-                        role: "close",
+                        role: Menus.isMac ? "close" : "quit",
                         label: "Uygulamadan Çık"
                     }
                 ]
