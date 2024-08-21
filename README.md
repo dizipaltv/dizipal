@@ -141,14 +141,15 @@ yarn start
 
 #### Daha fazla komuta nasıl ulaşabilirim?
 Evet daha birkaç komut daha mevcut bunları [package.json](package.json) içerisinde `"scripts"` altında bulabilirsiniz.
-işte versiyon 0.2.5 için kullanılan komutlar
+işte versiyon 0.3.1 için kullanılan komutlar
 ```
-minify    : "node scripts/minify.js"
-start     : "yarn minify && electron-forge start",
-package   : "yarn minify && electron-forge package",
-make      : "electron-forge make",
-build     : "yarn package && yarn make",
-dev       : "electron dev/index.js",
+`dev`       : Geliştirme sürecinde yaptığımız değişiklikleri sıkıştırma olmadan görmek için kullanılan script komutudur,
+minify      : Tüm kodlarımızı sıkıştıran komutdur,
+start       : Uygulamamızı başlatır,
+build       : Uygulamamızı paketler,
+build-linux : Uygulamamızı linux a paketler,
+build-mac   : Uygulamamızı macos a paketler,
+build-win   : Uygulamamızı windows a paketler
 ```
 
 <br /><br />
