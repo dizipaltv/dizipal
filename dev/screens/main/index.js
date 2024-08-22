@@ -1,4 +1,4 @@
-const {BrowserWindow, session} = require("electron");
+const {BrowserWindow, session, Menu} = require("electron");
 const {AdBlocker, Config, Paths} = require("../../components");
 const {Menus} = require("../../menus");
 
@@ -17,7 +17,7 @@ class MainScreen {
       }
     });
 
-    MainScreen.window.setMenu(Menus.default);
+    Menu.setApplicationMenu(Menus.default);
 
     MainScreen.reload(url);
 
