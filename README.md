@@ -1,5 +1,5 @@
 # Dizipal Masaüstü Uygulaması
-[![Dizipal Downloads](https://img.shields.io/github/downloads/dizipaltv/dizipal/total.svg?style=flat&label=Toplam%20İndirme)](https://github.com/dizipaltv/dizipal/releases)
+[![Dizipal Downloads](https://img.shields.io/github/downloads/dizipaltv/dizipal/total.svg?style=flat&label=Aylık%20İndirme)](https://github.com/dizipaltv/dizipal/releases)
 
 Açık kaynak kodlu dizipal masaüstü uygulaması
 
