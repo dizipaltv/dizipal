@@ -9,9 +9,9 @@
     "minify": "node scripts/minify.js",
     "start": "yarn minify && electron .",
     "build": "yarn minify && electron-builder --config electron-builder.yml",
-    "build-linux": "yarn minify && electron-builder --config electron-builder.yml --linux",
-    "build-mac": "yarn minify && electron-builder --config electron-builder.yml --mac",
-    "build-win": "yarn minify && electron-builder --config electron-builder.yml --win"
+    "build:linux": "yarn minify && electron-builder --config electron-builder.yml --linux",
+    "build:mac": "yarn minify && electron-builder --config electron-builder.yml --mac",
+    "build:win": "yarn minify && electron-builder --config electron-builder.yml --win"
   },
   "author": {
     "name": "ahmetcanisik",
