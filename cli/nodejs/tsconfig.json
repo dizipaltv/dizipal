@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "module": "NodeNext",
+    "emitDeclarationOnly": false,
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "strict": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["scripts"]
+}

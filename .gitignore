@@ -1,0 +1,18 @@
+# Dependency directories
+gui/node_modules/
+cli/nodejs/node_modules
+
+# Yarn Integrity file
+gui/.yarn-integrity
+cli/nodejs/.yarn-integrity
+
+# dotenv environment variables file
+**/*/.env
+**/*/.env.test
+
+# Webpack
+gui/.webpack/
+
+# cli
+cli/nodejs/dist
+cli/python/__pycache__

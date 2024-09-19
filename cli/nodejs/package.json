@@ -1,0 +1,59 @@
+{
+  "name": "dizipal-cli",
+  "version": "0.1.5",
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json",
+	"../README.md",
+    "../../LICENSE"
+  ],
+  "bin": {
+    "dizipal": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "try": "npm run build && node dist",
+    "test": "npm run build && node tests"
+  },
+  "description": "CLI tool for DizipalTV",
+  "main": "./dist/index.js",
+  "repository": "https://github.com/dizipaltv/dizipal-cli.git",
+  "author": {
+    "name": "dizipaltv",
+    "email": "dizipaltv@gmail.com",
+    "url": "https://github.com/dizipaltv"
+  },
+  "keywords": [
+    "dizipal",
+    "dizipal-cli",
+    "tv-series",
+    "movie-streaming",
+    "dizipal-address",
+    "find-latest",
+    "cli",
+    "nodejs",
+    "node-cli",
+    "javascript",
+    "npm-package",
+    "open-source",
+    "site-finder",
+    "streaming"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "clipanion": "^4.0.0-rc.4",
+    "cloudscraper": "^4.6.0",
+    "logil": "0.0.9",
+    "prompts": "^2.4.2",
+    "request": "^2.88.2",
+    "semver": "^7.6.3",
+    "teno": "0.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "@types/prompts": "^2.4.9",
+    "@types/semver": "^7.5.8",
+    "typescript": "^5.5.4"
+  }
+}
