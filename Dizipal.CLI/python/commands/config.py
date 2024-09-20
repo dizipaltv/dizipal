@@ -5,8 +5,10 @@ import requests
 def dirname(filepath = __file__):
     return os.path.dirname(os.path.abspath(filepath))
 
+THIS_FILE_DIR = dirname(__file__)
+
 def Metadata():
-    with open(os.path.join(dirname(), "metadata.json"), 'r', encoding="utf-8") as file:
+    with open(os.path.join(THIS_FILE_DIR, "..", "metadata.json"), 'r', encoding="utf-8") as file:
         return json.load(file)
 
 METADATA = Metadata()

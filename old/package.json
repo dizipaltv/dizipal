@@ -1,0 +1,37 @@
+{
+  "name": "dizipal",
+  "productName": "Dizipal",
+  "version": "0.4.0",
+  "description": "Dizipal application that can work in the desktop environment.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "electron dev/index.js",
+    "minify": "node scripts/minify.js",
+    "start": "yarn minify && electron .",
+    "build": "yarn minify && electron-builder --config electron-builder.yml",
+    "build:linux": "yarn minify && electron-builder --config electron-builder.yml --linux",
+    "build:mac": "yarn minify && electron-builder --config electron-builder.yml --mac",
+    "build:win": "yarn minify && electron-builder --config electron-builder.yml --win"
+  },
+  "author": {
+    "name": "ahmetcanisik",
+    "email": "can.isik.business@gmail.com",
+    "url": "https://ahmetcanisik.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dizipaltv/dizipal.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "clean-css": "^5.3.3",
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3",
+    "fs-extra": "^11.2.0",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.31.6",
+    "typescript": "^5.6.2"
+  }
+}

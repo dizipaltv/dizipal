@@ -1,0 +1,17 @@
+#ide
+.idea
+.vscode
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# package managers cache
+.npm
+.yarn
+
+# Electron Builder
+releases/
+
+# Dizipal
+src/

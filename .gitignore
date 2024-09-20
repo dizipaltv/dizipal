@@ -1,18 +1,18 @@
 # Dependency directories
-gui/node_modules/
-cli/nodejs/node_modules
+Dizipal.GUI/node_modules/
+Dizipal.CLI/nodejs/node_modules
 
 # Yarn Integrity file
-gui/.yarn-integrity
-cli/nodejs/.yarn-integrity
+Dizipal.GUI/.yarn-integrity
+Dizipal.CLI/nodejs/.yarn-integrity
 
 # dotenv environment variables file
 **/*/.env
 **/*/.env.test
 
 # Webpack
-gui/.webpack/
+Dizipal.GUI/.webpack/
 
 # cli
-cli/nodejs/dist
-cli/python/__pycache__
+Dizipal.CLI/nodejs/dist
+Dizipal.CLI/python/__pycache__
